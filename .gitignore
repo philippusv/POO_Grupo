@@ -22,3 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+/sistema_bancario/.classpath
+/sistema_bancario/.project
+/sistema_bancario/bin
+/sistema_bancario/.settings
+.project
