@@ -27,4 +27,5 @@ replay_pid*
 /sistema_bancario/.project
 /sistema_bancario/bin
 /sistema_bancario/.settings
+/sistema_bancario/.gitignore
 .project
