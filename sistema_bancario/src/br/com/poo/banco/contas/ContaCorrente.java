@@ -1,7 +1,9 @@
 package br.com.poo.banco.contas;
 
 public class ContaCorrente {
-
-	public static void main(String[] args) {	}
+	private int numero;
+	private String titular;
+	private double saldo;
+	
 
 }
