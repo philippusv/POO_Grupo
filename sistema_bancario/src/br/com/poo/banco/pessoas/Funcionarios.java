@@ -3,9 +3,9 @@ package br.com.poo.banco.pessoas;
 public class Funcionarios {
 	
 	// atributos
-	String nome;
-	String cpf;
-	double salario;
+	private String nome;
+	private String cpf;
+	private double salario;
 	
 	// construtores
 	public Funcionarios() {
