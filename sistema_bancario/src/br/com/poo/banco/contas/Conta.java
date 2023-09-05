@@ -20,6 +20,11 @@ public class Conta {
 	public double getSaldo() {
 		return saldo;
 	}
+	
+	//set
+	public void setTitular(String titular) {
+		this.titular = titular;
+	}
 
 	// sobrescreve metodo padrao toString
 	@Override
