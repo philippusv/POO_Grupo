@@ -12,19 +12,17 @@ public class Diretor {
 	public Diretor() {}
 	
 	public Diretor(String nome, String cpf, double salario, String senha) {
-		this.setNome(nome);
-		this.cpf = cpf;
+		this.nome = nome;
+		this.setCpf(cpf);
 		this.salario = salario;
-		this.senha = senha;
+		this.setSenha(senha);
 	}
 
 	// getters
-	public String getNome()	   { return nome;	 }
-	public String getCpf()	   { return cpf;	 }
-	public double getSalario() { return salario; }
-	public String getSenha()   { return senha;	 }
+	public String getNome() { return nome; }
+	public String getCpf()  { return cpf;  }
 	
 	// setters
-	public void setNome(String nome)   { this.nome = nome;	 }
-	public void setSenha(String senha) { this.senha = senha; }
+	public void setCpf(String cpf)		{ this.cpf = cpf; }
+	public void setSenha(String senha)  { this.senha = senha; }
 }
