@@ -3,9 +3,9 @@ package br.com.poo.banco.pessoas;
 public class Cliente {
 
 	// atributos
-	String nome;
-	String cpf;
-	int numConta;
+	private String nome;
+	private String cpf;
+	private int numConta;
 
 	// construtores
 	public Cliente() {
@@ -22,6 +22,15 @@ public class Cliente {
 	public String getNome() {
 		return nome;
 	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public int getNumConta() {
+		return numConta;
+	}
+	
 	
 	// setters
 	public void setNome(String nome) {
