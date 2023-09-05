@@ -3,11 +3,11 @@ package br.com.poo.banco.pessoas;
 public class Gerente {
 	
 	//atributos
-	String nome;
-	String cpf;
-	double salario;
-	String senha;
-	int numFuncionarios;
+	private String nome;
+	private String cpf;
+	private double salario;
+	private String senha;
+	private int numFuncionarios;
 
 	//construtores
 	public Gerente() {
@@ -22,7 +22,19 @@ public class Gerente {
 		this.numFuncionarios = numFuncionarios;
 	}
 	
-	//getters
+	//getters	
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public double getSalario() {
+		return salario;
+	}
 	
 	public int getNumFuncionarios() {
 		return numFuncionarios;
