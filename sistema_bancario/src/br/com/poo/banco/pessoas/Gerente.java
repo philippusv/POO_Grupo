@@ -39,6 +39,10 @@ public class Gerente {
 	public int getNumFuncionarios() {
 		return numFuncionarios;
 	}
+	
+	public String getSenha() {
+		return senha;
+	}
 
 	// setters
 
