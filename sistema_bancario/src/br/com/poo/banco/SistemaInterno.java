@@ -27,6 +27,8 @@ public class SistemaInterno {
 		logger.log(Level.INFO, () -> "" + conta1.getSaldo());
 		conta1.setTitular("Cliente ");
 		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
+		conta1.saque(100);
+		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
 		
 		// Instancia conta corrente 1
 		ContaCorrente cc1 = new ContaCorrente(123, "Icaro 2", 1500.00, 100.0);
@@ -67,6 +69,9 @@ public class SistemaInterno {
 		Presidente presidente1 = new Presidente("Paloma", "12345678933", "paloma@banco.com", 1500.00, 3);
 		logger.log(Level.INFO, () -> "Presidente 1: " + presidente1.getNome());
 		presidente1.setEmail("paloma2@banco.com");
+		
+		
+		
 	}
 	
 	
