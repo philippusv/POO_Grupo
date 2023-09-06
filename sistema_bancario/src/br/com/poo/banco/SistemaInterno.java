@@ -31,10 +31,16 @@ public class SistemaInterno {
 		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
 		
 		// Instancia conta corrente 1
-		ContaCorrente cc1 = new ContaCorrente(123, "Icaro 2", 1500.00, 100.0);
+		ContaCorrente cc1 = new ContaCorrente(123, "Icaro 2", 1500.00, 400.0);
 		logger.log(Level.INFO, () -> "" + cc1.getSaldo());
 		cc1.setTitular("CC 1");
+		cc1.saque(1400);
+		cc1.saque(200);
+		cc1.saque(200);
+		cc1.deposito(500);
 		logger.log(Level.INFO, () -> "Conta Corrente 1: " + cc1.getSaldo());
+		cc1.saque(1000);
+		cc1.saque(400);
 		
 		// Instancia conta poupanca 1
 		ContaPoupanca cp1 = new ContaPoupanca(123, "Icaro", 1500.00, 2.0);
