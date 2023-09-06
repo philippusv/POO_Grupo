@@ -20,7 +20,7 @@ public class ContaCorrente extends Conta {
 	}
 	
 	// setter para o chequeEspecial
-	public void getChequeEspecial(double chequeEspecial) {
+	public void setChequeEspecial(double chequeEspecial) {
 		this.chequeEspecial = chequeEspecial;
 	}
 	
