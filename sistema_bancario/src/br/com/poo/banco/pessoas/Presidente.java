@@ -1,30 +1,29 @@
 package br.com.poo.banco.pessoas;
 
-public class Presidente {
+public class Presidente extends Funcionarios{
 	//Atributos
-	private String nome;
-	private String cpf;
+	
 	private String email;
-	private double salario;
 	private int numUnidades;
 	
 	
 	//Construtor
 	public Presidente() {
-		
+		super();
 	}
 	
 	public Presidente(String nome, String cpf, String email, double salario, int numUnidades) {
-		this.nome = nome;
-		this.cpf = cpf;
+		super(nome, cpf, salario);
 		this.email = email;
-		this.salario = salario;
 		this.numUnidades = numUnidades;
 	}
 	
 	//getters
-	public String getNome() {
-		return nome;
+	public int getnumUnidades() {
+		return numUnidades;
+	}
+	public String getnEmail() {
+		return email;
 	}
 	
 	//setters
@@ -32,9 +31,4 @@ public class Presidente {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Presidente [nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", salario=" + salario
-				+ ", numUnidades=" + numUnidades + "]";
-	}
 }

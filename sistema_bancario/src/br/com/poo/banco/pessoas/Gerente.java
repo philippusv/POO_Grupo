@@ -1,41 +1,24 @@
 package br.com.poo.banco.pessoas;
 
-public class Gerente {
+public class Gerente extends Funcionarios {
 
 	// atributos
-	private String nome;
-	private String cpf;
-	private double salario;
 	private String senha;
 	private int numFuncionarios;
 
 	// construtores
 	public Gerente() {
-
+		super();
 	}
 
 	public Gerente(String nome, String cpf, double salario, String senha, int numFuncionarios) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.salario = salario;
-		this.senha = senha;
+		super(nome, cpf, salario);
 		this.numFuncionarios = numFuncionarios;
+		this.senha = senha;
 	}
 
 	// getters
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public double getSalario() {
-		return salario;
-	}
-
+	
 	public int getNumFuncionarios() {
 		return numFuncionarios;
 	}
@@ -44,6 +27,7 @@ public class Gerente {
 		return senha;
 	}
 
+	
 	// setters
 
 	public void setSenha(String senha) {
