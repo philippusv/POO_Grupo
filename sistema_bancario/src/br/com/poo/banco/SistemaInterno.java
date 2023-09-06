@@ -39,6 +39,7 @@ public class SistemaInterno {
 		// Instancia conta poupanca 1
 		ContaPoupanca cp1 = new ContaPoupanca(123, "Icaro", 1500.00, 2.0);
 		logger.log(Level.INFO, () -> "Conta Poucança 1: " + cp1.getSaldo());
+		cp1.calcularRendimento(1000.0);
 		
 		
 		// CLIENTES E FUNCIONARIOS
