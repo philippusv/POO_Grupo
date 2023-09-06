@@ -1,29 +1,28 @@
 package br.com.poo.banco.pessoas;
 
-public class Diretor {
-	
+public class Diretor extends Funcionarios {
+
 	// atributos
-	private String nome;
-	private String cpf;
-	private double salario;
+
 	private String senha;
-	
+
 	// construtores
-	public Diretor() {}
-	
+	public Diretor() {
+		super();
+	}
+
 	public Diretor(String nome, String cpf, double salario, String senha) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.salario = salario;
+		super(nome, cpf, salario);
 		this.senha = senha;
 	}
 
 	// getters
-	public String getNome()    { return nome;    }
-	public String getCpf()     { return cpf;     }
-	public double getSalario() { return salario; }
-	public String getSenha()   { return senha;   }
-	
+	public String getSenha() {
+		return senha;
+	}
+
 	// setters
-	public void setSenha(String senha)  { this.senha = senha; }
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 }
