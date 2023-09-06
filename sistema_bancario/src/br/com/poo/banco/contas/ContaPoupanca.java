@@ -1,30 +1,22 @@
 package br.com.poo.banco.contas;
 
-public class ContaPoupanca{
+public class ContaPoupanca extends Conta {
 
-     private int numeroCP;
-     private String nomeTitularCP;
-     private double saldoCP;
+	private double rendimento;
+	
+	// Construtores
+	public ContaPoupanca() {
+		super();
+	}
 
-
-     public ContaPoupanca() {
-        }
-
-     public ContaPoupanca(int numeroCP, String nomeTitularCP, double saldoCP) {
-            this.numeroCP = numeroCP;
-            this.nomeTitularCP = nomeTitularCP;
-            this.saldoCP = saldoCP;
-        }
-
-
-    public double getSaldo() {
-            return saldoCP;
-        }
-
-
-    @Override
-        public String toString() {
-            return "Conta Poupança: " + numeroCP + "\nNome do titular da Conta Poupança: " + nomeTitularCP + "\nSaldo da Conta Poupança: " + saldoCP;
-        }
+	public ContaPoupanca(int numero, String titular, double saldo, double rendimento) {
+		super(numero, titular, saldo);
+		this.rendimento = rendimento;
+	}
+	
+	// getter
+	public double getRendimento() {
+		return rendimento;
+	}
 
 }

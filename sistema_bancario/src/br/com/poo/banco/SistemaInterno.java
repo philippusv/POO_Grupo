@@ -23,19 +23,19 @@ public class SistemaInterno {
 		// CONTAS
 		
 		// Instancia conta 1
-		Conta conta1 = new Conta(123, "Icaro", 1500.00);
+		Conta conta1 = new Conta(123, "Icaro 1", 1500.00);
 		logger.log(Level.INFO, () -> "" + conta1.getSaldo());
 		conta1.setTitular("Cliente ");
 		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
 		
 		// Instancia conta corrente 1
-		ContaCorrente cc1 = new ContaCorrente(123, 1500.00, "Icaro");
-		logger.log(Level.INFO, () -> "" + cc1.getTitular());
-		cc1.setSaldo(2000.00);
+		ContaCorrente cc1 = new ContaCorrente(123, "Icaro 2", 1500.00, 100.0);
+		logger.log(Level.INFO, () -> "" + cc1.getSaldo());
+		cc1.setTitular("CC 1");
 		logger.log(Level.INFO, () -> "Conta Corrente 1: " + cc1.getSaldo());
 		
 		// Instancia conta poupanca 1
-		ContaPoupanca cp1 = new ContaPoupanca(123, "Icaro", 1500.00);
+		ContaPoupanca cp1 = new ContaPoupanca(123, "Icaro", 1500.00, 2.0);
 		logger.log(Level.INFO, () -> "Conta Poucança 1: " + cp1.getSaldo());
 		
 		

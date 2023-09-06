@@ -1,45 +1,29 @@
 package br.com.poo.banco.contas;
 
-public class ContaCorrente {
-    private int numeroConta;
-    private double saldo;
-    private String titular;
- // Construtor
+public class ContaCorrente extends Conta {
 
-    public ContaCorrente() {
-    }
-    public ContaCorrente(int numeroConta, double saldoContaCorrente, String titular) {
-        this.numeroConta = numeroConta;
-        this.saldo = saldoContaCorrente;
-        this.titular = titular;
-    }
+	private double chequeEspecial;
 
-    // getter para o número da conta
-    public int getNumeroConta() {
-        return numeroConta;
+	// Construtor
+	public ContaCorrente() {
+		super();
+	}
+	
+	public ContaCorrente(int numero, String titular, double saldo, double chequeEspecial) {
+		super(numero, titular, saldo);
+		this.chequeEspecial = chequeEspecial;
+	}
 
-
-    }
-    // getter para o titular
-    public String getTitular() {
-        return titular;
-
-    }
-
-    // getter para o saldo
-    public double getSaldo() {
-        return saldo;
-    }
-
-    // Método setter para o número da conta
-    public void setNumeroConta(int numeroConta) {
-        this.numeroConta = numeroConta;
-    }
-
-    // Método setter para o saldo
-    public void setSaldo(double saldo) {
-        this.saldo = saldo; 
-
-    }
+	// getter para o chequeEspecial
+	public double getChequeEspecial() {
+		return chequeEspecial;
+	}
+	
+	// setter para o chequeEspecial
+	public void getChequeEspecial(double chequeEspecial) {
+		this.chequeEspecial = chequeEspecial;
+	}
+	
+	
 
 }
