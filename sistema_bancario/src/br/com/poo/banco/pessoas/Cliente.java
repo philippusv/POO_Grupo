@@ -6,7 +6,8 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private int numConta;
-
+	protected int senha;
+	
 	// construtores
 	public Cliente() {
 
@@ -30,8 +31,11 @@ public class Cliente {
 	public int getNumConta() {
 		return numConta;
 	}
-	
-	
+		
+	public int getSenha() {
+		return senha;
+	}
+
 	// setters
 	public void setNome(String nome) {
 		this.nome = nome;

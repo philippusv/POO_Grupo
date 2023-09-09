@@ -3,8 +3,8 @@ package br.com.poo.banco.pessoas;
 public class Gerente extends Funcionarios {
 
 	// atributos
-	private String senha;
 	private int numFuncionarios;
+	private String agencia;
 
 	// construtores
 	public Gerente() {
@@ -23,10 +23,9 @@ public class Gerente extends Funcionarios {
 		return numFuncionarios;
 	}
 	
-	public String getSenha() {
-		return senha;
+	public String getAgencia() {
+		return agencia;
 	}
-
 	
 	// setters
 

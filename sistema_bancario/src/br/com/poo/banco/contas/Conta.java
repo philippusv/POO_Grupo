@@ -1,11 +1,10 @@
 package br.com.poo.banco.contas;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.com.poo.banco.util.Util;
 
-public class Conta {
+public abstract class Conta {
 
 	// instancia o logger
 	Logger logger = Util.setupLogger();
@@ -13,12 +12,14 @@ public class Conta {
 	private int numero;
 	private String titular;
 	protected double saldo;
+	protected String cpfTitular;
+	protected String agencia;
 
 	// construtores
-	public Conta() {
+	protected Conta() {
 	}
 
-	public Conta(int numero, String titular, double saldo) {
+	protected Conta(int numero, String titular, double saldo) {
 		this.numero = numero;
 		this.titular = titular;
 		this.saldo = saldo;
@@ -30,37 +31,31 @@ public class Conta {
 	public double getSaldo() {
 		return saldo;
 	}
+	public String getCpfTitular() {
+		return cpfTitular;
+	}
+
+	public String getAgencia() {
+		return agencia;
+	}
 
 	// set
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}
 
-	// Método para deposito em dinheiro na conta
-	public void deposito(double valor) {
-        if (valor > 0) {
-            saldo += valor;
-          logger.log(Level.INFO,()->"Depósito na Conta  de R$" + valor + " realizado com sucesso.");
-        } else {
-          logger.warning("O valor do depósito na Conta deve ser maior que zero.");
-        }
-	}
-
-	// Método para saque em dinheiro na conta
-	public void saque(double valor) {
-		if (valor > 0 && valor <= saldo) {
-			saldo -= valor;
-			logger.log(Level.INFO,()-> "Saque de R$" + valor + " realizado com sucesso.");
-		} else {
-			logger.warning("Saldo insuficiente ou valor de saque inválido.");
-		}
-
-	}
 
 	// sobrescreve metodo padrao toString
 	@Override
 	public String toString() {
 		return "Número da conta: " + numero + "\nTitular: " + titular + "\nSaldo: " + saldo + "\n";
 	}
+	
+	//Método depositar
+	public void depositar(double valor) {
+		this.saldo += valor;		
+	}
+
+	
 
 }
