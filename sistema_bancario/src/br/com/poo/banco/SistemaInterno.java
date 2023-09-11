@@ -9,7 +9,6 @@ import br.com.poo.banco.pessoas.Funcionarios;
 import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Presidente;
 import br.com.poo.banco.util.Util;
-import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 
@@ -23,20 +22,29 @@ public class SistemaInterno {
 		// CONTAS
 		
 		// Instancia conta 1
-		Conta conta1 = new Conta(123, "Icaro 1", 1500.00);
+		ContaCorrente conta1 = new ContaCorrente(123, "Icaro 1", 1500.00, 500.0 );
 		logger.log(Level.INFO, () -> "" + conta1.getSaldo());
 		conta1.setTitular("Cliente ");
 		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
+		conta1.sacar(100.0);
+		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
 		
 		// Instancia conta corrente 1
-		ContaCorrente cc1 = new ContaCorrente(123, "Icaro 2", 1500.00, 100.0);
+		ContaCorrente cc1 = new ContaCorrente(123, "Icaro 2", 1500.00, 400.0);
 		logger.log(Level.INFO, () -> "" + cc1.getSaldo());
 		cc1.setTitular("CC 1");
+		cc1.sacar(1400);
+		cc1.sacar(200);
+		cc1.sacar(200);
+		cc1.depositar(500);
 		logger.log(Level.INFO, () -> "Conta Corrente 1: " + cc1.getSaldo());
+		cc1.sacar(1000);
+		cc1.sacar(400);
 		
 		// Instancia conta poupanca 1
 		ContaPoupanca cp1 = new ContaPoupanca(123, "Icaro", 1500.00, 2.0);
 		logger.log(Level.INFO, () -> "Conta Poucança 1: " + cp1.getSaldo());
+		cp1.calcularRendimento(1000.0,30);
 		
 		
 		// CLIENTES E FUNCIONARIOS
@@ -67,6 +75,9 @@ public class SistemaInterno {
 		Presidente presidente1 = new Presidente("Paloma", "12345678933", "paloma@banco.com", 1500.00, 3);
 		logger.log(Level.INFO, () -> "Presidente 1: " + presidente1.getNome());
 		presidente1.setEmail("paloma2@banco.com");
+		
+		
+		
 	}
 	
 	

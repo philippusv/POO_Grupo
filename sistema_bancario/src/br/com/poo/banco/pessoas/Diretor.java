@@ -2,10 +2,7 @@ package br.com.poo.banco.pessoas;
 
 public class Diretor extends Funcionarios {
 
-	// atributos
-
-	private String senha;
-
+		
 	// construtores
 	public Diretor() {
 		super();

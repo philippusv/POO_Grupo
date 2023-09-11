@@ -6,6 +6,8 @@ public class Funcionarios {
 	private String nome;
 	private String cpf;
 	private double salario;
+	protected String senha;
+	protected String cargo;
 	
 	// construtores
 	public Funcionarios() {
@@ -31,7 +33,15 @@ public class Funcionarios {
 	public double getSalario() {
 		return salario;
 	}
-	
+		
+	public String getSenha() {
+		return senha;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
 	//setters
 	public void setNome(String nome) {
 		this.nome = nome;
