@@ -10,13 +10,16 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JFormattedTextField;
 
 public class JCadastroCliente extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final JLabel lbCadastroCliente = new JLabel("Cadastro de Cliente");
 	private JPasswordField pswSenhaCliente;
