@@ -62,6 +62,12 @@ public class Funcionarios {
 	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
+
+	@Override
+	public String toString() {
+		return "Funcionarios [cargo=" + cargo + ",\nnome=" + nome + ", \ncpf=" + cpf + ",\nsalario=" + salario + ",\nsenha="
+				+ senha + "]";
+	}
 	
-	
+		
 }

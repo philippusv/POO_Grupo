@@ -82,7 +82,9 @@ public class LeituraEscrita {
 			}
 		}
 		System.out.println(Conta.mapaContas);
-
+		System.out.println(Cliente.mapaCliente);
+		System.out.println(Funcionarios.mapaFuncionarios);
+		
 		// fechar o buff
 		buffRead.close();
 	}
