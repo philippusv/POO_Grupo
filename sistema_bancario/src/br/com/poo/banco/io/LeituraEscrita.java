@@ -11,6 +11,8 @@ import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Funcionarios;
+import br.com.poo.banco.pessoas.Gerente;
 
 public class LeituraEscrita {
 	// constantes
@@ -56,6 +58,8 @@ public class LeituraEscrita {
 					Cliente.mapaCliente.put(dados[2],cl);
 					
 				} else if (dados[0].equalsIgnoreCase("GERENTE")) {
+					Gerente gr = new Gerente(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
+					Funcionarios.mapaFuncionarios.put(dados[2], gr);
 				} else if (dados[0].equalsIgnoreCase("DIRETOR")) {
 				} else if (dados[0].equalsIgnoreCase("PRESIDENTE")) {
 				}

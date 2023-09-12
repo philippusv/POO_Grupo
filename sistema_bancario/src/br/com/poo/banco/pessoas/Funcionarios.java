@@ -1,23 +1,31 @@
 package br.com.poo.banco.pessoas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Funcionarios {
 	
 	// atributos
+	protected String cargo;
 	private String nome;
 	private String cpf;
-	private double salario;
-	protected String senha;
-	protected String cargo;
+	private Double salario;
+	protected Integer senha;
+	
+	//criar map
+	public static Map<String, Funcionarios> mapaFuncionarios = new HashMap<>();
 	
 	// construtores
 	public Funcionarios() {
 		
 	}
 	
-	public Funcionarios(String nome, String cpf, double salario) {
+	public Funcionarios(String cargo, String nome, String cpf, Double salario, Integer senha) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.salario = salario;
+		this.cargo = cargo;
+		this.senha = senha;
 	}
 	
 	
@@ -34,7 +42,7 @@ public class Funcionarios {
 		return salario;
 	}
 		
-	public String getSenha() {
+	public Integer getSenha() {
 		return senha;
 	}
 

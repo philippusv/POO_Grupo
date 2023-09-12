@@ -3,7 +3,7 @@ package br.com.poo.banco.pessoas;
 public class Gerente extends Funcionarios {
 
 	// atributos
-	private int numFuncionarios;
+	private Integer numFuncionarios;
 	private String agencia;
 
 	// construtores
@@ -11,10 +11,10 @@ public class Gerente extends Funcionarios {
 		super();
 	}
 
-	public Gerente(String nome, String cpf, double salario, String senha, int numFuncionarios) {
-		super(nome, cpf, salario);
+	public Gerente(String cargo, String nome, String cpf, Double salario, Integer senha, Integer numFuncionarios, String agencia) {
+		super(cargo, nome, cpf, salario, senha);
 		this.numFuncionarios = numFuncionarios;
-		this.senha = senha;
+		this.agencia = agencia;
 	}
 
 	// getters
@@ -29,7 +29,7 @@ public class Gerente extends Funcionarios {
 	
 	// setters
 
-	public void setSenha(String senha) {
+	public void setSenha(Integer senha) {
 		this.senha = senha;
 	}
 
