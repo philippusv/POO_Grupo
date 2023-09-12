@@ -14,6 +14,7 @@ import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Diretor;
 import br.com.poo.banco.pessoas.Funcionarios;
 import br.com.poo.banco.pessoas.Gerente;
+import br.com.poo.banco.pessoas.Presidente;
 
 public class LeituraEscrita {
 	// constantes
@@ -68,6 +69,9 @@ public class LeituraEscrita {
 					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]));
 					Funcionarios.mapaFuncionarios.put(dados[2], dr);
 				} else if (dados[0].equalsIgnoreCase("PRESIDENTE")) {
+					// map Diretor
+					Presidente pr = new Presidente(dados[0], dados[1], dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
+					Funcionarios.mapaFuncionarios.put(dados[2], pr);
 				}
 
 			} else {

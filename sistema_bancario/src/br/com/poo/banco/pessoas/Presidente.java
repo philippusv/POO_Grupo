@@ -3,8 +3,8 @@ package br.com.poo.banco.pessoas;
 public class Presidente extends Funcionarios{
 	//Atributos
 	
+	private Integer numUnidades;
 	private String email;
-	private int numUnidades;
 	
 	
 	//Construtor
@@ -12,17 +12,18 @@ public class Presidente extends Funcionarios{
 		super();
 	}
 	
-	public Presidente(String nome, String cpf, String email, double salario, int numUnidades) {
-		super(nome, cpf, salario);
-		this.email = email;
+	public Presidente(String cargo, String nome, String cpf, Double salario, Integer senha, Integer numUnidades, String email) {
+		super(cargo, nome, cpf, salario, senha);
 		this.numUnidades = numUnidades;
+		this.email = email;
 	}
 	
 	//getters
-	public int getnumUnidades() {
+	public Integer getNumUnidades() {
 		return numUnidades;
 	}
-	public String getnEmail() {
+	
+	public String getEmail() {
 		return email;
 	}
 	
