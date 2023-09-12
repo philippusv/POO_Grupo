@@ -1,5 +1,6 @@
 package br.com.poo.banco;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,12 +10,18 @@ import br.com.poo.banco.pessoas.Funcionarios;
 import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Presidente;
 import br.com.poo.banco.util.Util;
+import br.com.poo.banco.io.LeituraEscrita;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 
 public class SistemaInterno {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		//instanciar o metodo de leitura 
+		LeituraEscrita.leitor("BancoDados");
+				
+		//instanciar o metodo de escrita
+		LeituraEscrita.escritor("BancoDados");
 		
 		// instancia o logger
 		Logger logger = Util.setupLogger();
@@ -22,17 +29,16 @@ public class SistemaInterno {
 		// CONTAS
 		
 		// Instancia conta 1
-		ContaCorrente conta1 = new ContaCorrente(123, "Icaro 1", 1500.00, 500.0 );
+		ContaCorrente conta1 = new ContaCorrente("Corrente","123456-2", "123.456.789-12", 1500.00,"001", 500.0 );
 		logger.log(Level.INFO, () -> "" + conta1.getSaldo());
-		conta1.setTitular("Cliente ");
+		conta1.setChequeEspecial(1000.0);
 		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
 		conta1.sacar(100.0);
 		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
 		
 		// Instancia conta corrente 1
-		ContaCorrente cc1 = new ContaCorrente(123, "Icaro 2", 1500.00, 400.0);
+		ContaCorrente cc1 = new ContaCorrente("Corrente","660800-2", "111.654.524-66", 500.00,"005", 700.0 );
 		logger.log(Level.INFO, () -> "" + cc1.getSaldo());
-		cc1.setTitular("CC 1");
 		cc1.sacar(1400);
 		cc1.sacar(200);
 		cc1.sacar(200);
@@ -42,15 +48,15 @@ public class SistemaInterno {
 		cc1.sacar(400);
 		
 		// Instancia conta poupanca 1
-		ContaPoupanca cp1 = new ContaPoupanca(123, "Icaro", 1500.00, 2.0);
+		ContaPoupanca cp1 = new ContaPoupanca("Poupança", "123456-1", "123.456.789-11",30000.00,"001");
 		logger.log(Level.INFO, () -> "Conta Poucança 1: " + cp1.getSaldo());
 		cp1.calcularRendimento(1000.0,30);
 		
 		
 		// CLIENTES E FUNCIONARIOS
 		
-		// Instancia cliente 1
-		Cliente cl1 = new Cliente("Cliente 1", "12345678910", 123);
+		// Instancia cliente 1 
+		Cliente cl1 = new Cliente("Cliente","Mariana Coutinho", "123.456.789-10", "101099-2",12345);
 		logger.log(Level.INFO, cl1.getNome());
 		cl1.setNome("Icaro");
 		logger.log(Level.INFO, () -> "Cliente 1: " + cl1.getNome());

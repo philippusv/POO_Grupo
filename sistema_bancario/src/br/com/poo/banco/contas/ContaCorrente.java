@@ -11,20 +11,24 @@ public class ContaCorrente extends Conta implements IConta{
 		super();
 	}
 
-	public ContaCorrente(int numero, String titular, double saldo, double chequeEspecial) {
-		super(numero, titular, saldo);
+	public ContaCorrente(String tipoConta, String numero,String cpfTitular, Double saldo, 
+			String agencia,Double chequeEspecial) {
+		super(tipoConta, numero, cpfTitular, saldo, 
+				agencia);
 		this.chequeEspecial = chequeEspecial;
 	}
 
 	// getter para o chequeEspecial
-	public double getChequeEspecial() {
+	public Double getChequeEspecial() {
 		return chequeEspecial;
 	}
 
 	// setter para o chequeEspecial
-	public void setChequeEspecial(double chequeEspecial) {
+	public void setChequeEspecial(Double chequeEspecial) {
 		this.chequeEspecial = chequeEspecial;
 	}
+	
+		
 	//metodos
 
 	// Método para deposito em dinheiro na conta

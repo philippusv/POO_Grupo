@@ -13,9 +13,9 @@ public class ContaPoupanca extends Conta implements IConta {
 		super();
 	}
 
-	public ContaPoupanca(int numero, String titular, double saldo, double rendimento) {
-		super(numero, titular, saldo);
-		this.rendimento = rendimento;
+	public ContaPoupanca(String tipoConta, String numero,String cpfTitular, Double saldo, 
+			String agencia) {
+		super(tipoConta,numero, cpfTitular, saldo, agencia);
 	}
 
 	// getter

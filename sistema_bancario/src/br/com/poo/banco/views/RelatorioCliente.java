@@ -54,19 +54,19 @@ public class RelatorioCliente extends JFrame {
 		scrollPane.setViewportView(tabelaCliente);
 		tabelaCliente.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Mahyara Paraquett", "1234567-9"},
-				{"Icaro Gaspar", "2424583-2"},
-				{"Paloma Tavares", "3568254-7"},
-				{"Luciana Brand", "4561237-6"},
-				{"Rafael Vinicius", "8945621-1"},
-				{"Ricardo Soares", "5553337-5"},
-				{"Ana Paula Padrao", "6631445-3"},
-				{"Helena Rizzo", "8456321-8"},
-				{"Giulietta Capuleto", "7777555-5"},
-				{"Romeu Montequio", "4448888-2"},
+				{"Mahyara Paraquett", "123456-1", "Poupan\u00E7a"},
+				{"Icaro Gaspar", "200000-1", "Poupan\u00E7a"},
+				{"Paloma Tavares", "521485-1", "Poupan\u00E7a"},
+				{"Luciana Brand", "789000-1", "Poupan\u00E7a"},
+				{"Rafael Vinicius", "101099-1", "Poupan\u00E7a"},
+				{"Rafael Vinicius", "660800-2", "Corrente"},
+				{"Ana Paula Padrao", "889002-2", "Corrente"},
+				{"Helena Rizzo", "112233-2", "Corrente"},
+				{"Giulietta Capuleto", "210593-2", "Corrente"},
+				{"Romeu Montequio", "190823-2", "Corrente"},
 			},
 			new String[] {
-				"Nome_Cliente", "Conta"
+				"Nome_Cliente", "Conta", "Tipo_Conta"
 			}
 		));
 		tabelaCliente.getColumnModel().getColumn(0).setPreferredWidth(96);
