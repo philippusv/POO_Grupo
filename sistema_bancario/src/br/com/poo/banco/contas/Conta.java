@@ -65,7 +65,7 @@ public abstract class Conta {
 	// sobrescreve metodo padrao toString
 	@Override
 	public String toString() {
-		return "Tipo de conta: "+ tipoConta+"Número da conta: " + numero + "\nCPF Titular: " + cpfTitular + "\nSaldo: " + saldo + "\nAgencia: "+agencia;
+		return "Tipo de conta: "+ tipoConta +" Número da conta: " + numero + "\nCPF Titular: " + cpfTitular + "Saldo: " + saldo + "\nAgencia: "+agencia;
 	}
 	
 

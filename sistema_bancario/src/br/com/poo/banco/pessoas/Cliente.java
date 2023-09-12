@@ -53,5 +53,9 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Tipo: "+ tipo +"Nome: " + nome + "\nCPF Titular: " + cpf + "\nConta: " + numConta + "\nSenha: "+ senha;
+	}
 }

@@ -79,7 +79,7 @@ public class LeituraEscrita {
 		BufferedWriter buffWriter = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
 
 		// recebo os dados do usuário
-		System.out.println("Escreva algo: ");
+		System.out.println("Insira a informação desejada: ");
 		input = sc.nextLine();
 
 		// coloco o que eu recebi no arquivo

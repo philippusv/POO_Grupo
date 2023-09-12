@@ -56,7 +56,7 @@ public class SistemaInterno {
 		// CLIENTES E FUNCIONARIOS
 		
 		// Instancia cliente 1 
-		Cliente cl1 = new Cliente("Cliente","Mariana Coutinho", "123.456.789-10", "101099-2",12345);
+		Cliente cl1 = new Cliente("Cliente","Mariana Coutinho", "123.456.789-10", "101099-2",123);
 		logger.log(Level.INFO, cl1.getNome());
 		cl1.setNome("Icaro");
 		logger.log(Level.INFO, () -> "Cliente 1: " + cl1.getNome());
@@ -85,6 +85,5 @@ public class SistemaInterno {
 		
 		
 	}
-	
-	
+		
 }
