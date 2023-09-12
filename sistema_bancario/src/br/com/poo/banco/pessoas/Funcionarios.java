@@ -59,7 +59,7 @@ public class Funcionarios {
 		this.cpf = cpf;
 	}
 	
-	public void setSalario(double salario) {
+	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
 	

@@ -16,6 +16,6 @@ Cliente;Rafael Vinicius;111.654.524-66;660800-2;55501
 Cliente;Ana Paula Padrao;458.998.885-33;889002-2;66203
 Cliente;Giulietta Capuleto;996.990.880-30;210593-2;77709
 Cliente;Romeu Montequio;624.220.111-43;190823-2;01015
-Gerente;
-Diretor;
-Presidente;
+Gerente;Mahyara Paraquett;567.321.123-44;30000.00;10109;6;002
+Diretor;Icaro Gaspar;001.568.334-98;50000.00;54321
+Presidente;Luciana Brand;778.445.662-02;150000.00;93578;15;luBrand@banco.com

@@ -13,4 +13,5 @@ public class Diretor extends Funcionarios {
 		this.senha = senha;
 	}
 	
+	
 }

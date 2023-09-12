@@ -56,19 +56,22 @@ public class LeituraEscrita {
 					Conta.mapaContas.put(dados[2], cc);
 					//String tipo, String nome, String cpf, String numConta, Interger senha
 				} else if (dados[0].equalsIgnoreCase("CLIENTE")) {
+					
 					// map Cliente
 					Cliente cl = new Cliente(dados[0], dados[1],dados[2],dados[3],Integer.parseInt(dados[4]));
 					Cliente.mapaCliente.put(dados[2],cl);
 					
 				} else if (dados[0].equalsIgnoreCase("GERENTE")) {
-					// map Gerente
-					Gerente gr = new Gerente(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
-					Funcionarios.mapaFuncionarios.put(dados[2], gr);
+						Gerente gr = new Gerente(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),
+							Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
+								Funcionarios.mapaFuncionarios.put(dados[2], gr);
 				} else if (dados[0].equalsIgnoreCase("DIRETOR")) {
+					
 					// map Diretor
 					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]));
 					Funcionarios.mapaFuncionarios.put(dados[2], dr);
 				} else if (dados[0].equalsIgnoreCase("PRESIDENTE")) {
+					
 					// map Diretor
 					Presidente pr = new Presidente(dados[0], dados[1], dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
 					Funcionarios.mapaFuncionarios.put(dados[2], pr);

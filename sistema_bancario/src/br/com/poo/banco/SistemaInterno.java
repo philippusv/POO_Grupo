@@ -62,23 +62,25 @@ public class SistemaInterno {
 		logger.log(Level.INFO, () -> "Cliente 1: " + cl1.getNome());
 		
 		// Instancia funcionario 1
-		Funcionarios funcionario1 = new Funcionarios("Mahyara", "12345678911", 1500.00);
+		//String cargo, String nome, String cpf, Double salario, Integer senha
+		Funcionarios funcionario1 = new Funcionarios("Gerente", "Mahyara", "123.456.789-11", 15000.00, 56693);
 		logger.log(Level.INFO, funcionario1.getNome());
 		funcionario1.setNome("Luciana");
 		logger.log(Level.INFO, () -> "Funcionario 1: " + funcionario1.getNome());
 		
 		// Instancia diretor 1
-		Diretor diretor1 = new Diretor("Mahyara", "12345678911", 1500.00, "123");
+		//String cargo, String nome, String cpf, Double salario, Integer senha
+		Diretor diretor1 = new Diretor("Diretor", "Icaro", "321.625.987-33", 30000.00, 11223);
 		logger.log(Level.INFO, () -> "Diretor 1: " + diretor1.getNome());
-		diretor1.setSenha("1234");
-		
+				
 		// Instancia gerente 1
-		Gerente gerente1 = new Gerente("Felps", "12345678922", 1500.00, "123", 5);
+		//String cargo, String nome, String cpf, Double salario, Integer senha, Integer numFuncionarios, String agencia
+		Gerente gerente1 = new Gerente("Gerente","Felps", "899.223.449-66",15000.00,12355, 10, "001");
 		logger.log(Level.INFO, () -> "Gerente 1: " + gerente1.getNome());
-		gerente1.setSenha("1234");
 		
 		// Instancia presidente 1
-		Presidente presidente1 = new Presidente("Paloma", "12345678933", "paloma@banco.com", 1500.00, 3);
+		//String cargo, String nome, String cpf, Double salario, Integer senha, Integer numUnidades, String email
+		Presidente presidente1 = new Presidente("Presidente","Lu", "332.554.889-96", 250000.00, 93578, 15,"luBrand@banco.com");
 		logger.log(Level.INFO, () -> "Presidente 1: " + presidente1.getNome());
 		presidente1.setEmail("paloma2@banco.com");
 		
