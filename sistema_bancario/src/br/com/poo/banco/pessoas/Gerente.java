@@ -10,12 +10,14 @@ public class Gerente extends Funcionarios implements IFuncionarios{
 	public Gerente() {
 		super();
 	}
-
-	public Gerente(String cargo, String nome, String cpf, Double salario, Integer senha, Integer numFuncionarios, String agencia) {
-		super(cargo, nome, cpf, salario, senha);
+	
+	public Gerente(String tipo, String nome, String cpf, Integer senha, Double salario
+			,Integer numFuncionarios, String agencia) {
+		super(tipo, nome, cpf, senha, salario);
 		this.numFuncionarios = numFuncionarios;
 		this.agencia = agencia;
 	}
+	
 
 	// getters
 	public int getNumFuncionarios() {
@@ -25,15 +27,16 @@ public class Gerente extends Funcionarios implements IFuncionarios{
 	public String getAgencia() {
 		return agencia;
 	}
+	// setters
 	
+	public void setSenha(Integer senha) {
+		this.senha = senha;
+	}
+	
+	//Método bonificação
 	public double getBonificacao() {
 		return this.getSalario() * 0.10;
 	}
 	
-	// setters
-
-	public void setSenha(Integer senha) {
-		this.senha = senha;
-	}
 
 }
