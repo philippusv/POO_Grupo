@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import br.com.poo.banco.contas.Conta;
@@ -87,8 +85,8 @@ public class LeituraEscrita {
 				break;
 			}
 		}
-		System.out.println(Conta.mapaContas);
-		System.out.println(Pessoas.mapaPessoas);
+//		System.out.println(Conta.mapaContas);
+//		System.out.println(Pessoas.mapaPessoas);
 		
 		// fechar o buff
 		buffRead.close();

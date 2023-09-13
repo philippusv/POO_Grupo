@@ -4,22 +4,29 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.com.poo.banco.contas.ContaCorrente;
+import br.com.poo.banco.contas.ContaPoupanca;
+import br.com.poo.banco.io.LeituraEscrita;
 import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Diretor;
 import br.com.poo.banco.pessoas.Funcionarios;
 import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Presidente;
 import br.com.poo.banco.util.Util;
-import br.com.poo.banco.io.LeituraEscrita;
-import br.com.poo.banco.contas.ContaCorrente;
-import br.com.poo.banco.contas.ContaPoupanca;
+import br.com.poo.banco.views.JLogin;
 
 public class SistemaInterno {
 
 	public static void main(String[] args) throws IOException {
+		
 		//instanciar o metodo de leitura 
 		LeituraEscrita.leitor("BancoDados");
-				
+		
+		//Chamada do login
+		JLogin jl = new JLogin();
+		jl.setLocationRelativeTo(jl);
+		jl.setVisible(true);
+		
 		//instanciar o metodo de escrita
 		LeituraEscrita.escritor("BancoDados");
 		
