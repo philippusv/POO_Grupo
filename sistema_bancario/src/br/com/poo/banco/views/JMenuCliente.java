@@ -84,7 +84,7 @@ public class JMenuCliente extends JFrame {
 		contentPane.add(btnSaldo);
 		
 		JButton btnExtrato = new JButton("EXTRATO");
-		btnExtrato.setBounds(222, 141, 85, 27);
+		btnExtrato.setBounds(222, 141, 106, 27);
 		contentPane.add(btnExtrato);
 		
 		
