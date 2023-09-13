@@ -3,30 +3,28 @@ Poupanca;200000-1;222.333.444-55;100000.00;002
 Poupanca;521485-1;555.444.333-22;50000.00;003
 Poupanca;789000-1;320.123.230-92;100.00;001
 Poupanca;101099-1;111.654.524-66;10000.00;005
+Poupanca;222325-1;427.118.842-15;23502.00;003
 Corrente;660800-2;111.654.524-66;500000.00;005;500
 Corrente;889002-2;458.998.885-33;100.00;003;1000
 Corrente;112233-2;555.444.333-22;6574.00;002;100
 Corrente;210593-2;996.990.880-30;1.00;004;2500
 Corrente;190823-2;624.220.111-43;960.00;004;8000
-
-/////Cliente(String tipo, String nome, String cpf, Integer senha, String numConta)///
-
-Cliente;Mahyara Paraquett;123.456.789-11;123456-1;12354
-Cliente;Icaro Gaspar;222.333.444-55;200000-1;54321
-Cliente;Paloma Tavares;555.444.333-22;112233-2;11233
-Cliente;Luciana Brand;32.123.230-92;789000-1;44522
-Cliente;Rafael Vinicius;111.654.524-66;660800-2;55501
-Cliente;Ana Paula Padrao;458.998.885-33;889002-2;66203
-Cliente;Giulietta Capuleto;996.990.880-30;210593-2;77709
-Cliente;Romeu Montequio;624.220.111-43;190823-2;01015
-
-/////String tipo, String nome, String cpf, Integer senha, Double salario
-			,Integer numFuncionarios, String agencia////////
-			
-Gerente;Mahyara Paraquett;567.321.123-44;30000.00;10109;6;002
-
-/////String tipo, String nome, String cpf, Integer senha, Double salario//////
-Diretor;Icaro Gaspar;001.568.334-98;50000.00;54321
-
-////String tipo, String nome, String cpf, Integer senha, Double salario, Integer numUnidades///
-Presidente;Luciana Brand;778.445.662-02;150000.00;93578;15;luBrand@banco.com
+Corrente;720201-2;174.229.781-02;19000.00;004;5000
+Cliente;Mahyara Paraquett;123.456.789-11;12354;123456-1
+Cliente;Icaro Gaspar;222.333.444-55;54321;200000-1
+Cliente;Paloma Tavares;555.444.333-22;11233;112233-2
+Cliente;Luciana Brand;320.123.230-92;44522;789000-1
+Cliente;Rafael Vinicius;111.654.524-66;55501;660800-2
+Cliente;Ana Paula Padrao;458.998.885-33;66203;889002-2
+Cliente;Giulietta Capuleto;996.990.880-30;77709;210593-2
+Cliente;Romeu Montequio;624.220.111-43;01015;190823-2
+Cliente;Rodrigo Fernandes;427.118.842-15;19235;222325-1
+Cliente;Amelia Curtis;174.229.781-02;38972;720201-2
+Gerente;Mahyara Paraquett;123.456.789-11;10109;30000.00;6;002
+Gerente;Romeu Montequio;624.220.111-43;01015;27500.00;5;003
+Gerente;Rodrigo Fernandes;427.118.842-15;19235;30500.00;6;004
+Diretor;Icaro Gaspar;222.333.444-55;54321;50000.00
+Diretor;Amelia Curtis;174.229.781-02;21905;55000.00
+Diretor;Giulietta Capuleto;996.990.880-30;77709;40000.00
+Presidente;Luciana Brand;320.123.230-92;93578;150000.00;15
+Presidente;Ana Paula Padrao;458.998.885-33;66203;113000.00;8
