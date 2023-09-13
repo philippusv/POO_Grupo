@@ -8,6 +8,9 @@ Corrente;889002-2;458.998.885-33;100.00;003;1000
 Corrente;112233-2;555.444.333-22;6574.00;002;100
 Corrente;210593-2;996.990.880-30;1.00;004;2500
 Corrente;190823-2;624.220.111-43;960.00;004;8000
+
+/////Cliente(String tipo, String nome, String cpf, Integer senha, String numConta)///
+
 Cliente;Mahyara Paraquett;123.456.789-11;123456-1;12354
 Cliente;Icaro Gaspar;222.333.444-55;200000-1;54321
 Cliente;Paloma Tavares;555.444.333-22;112233-2;11233
@@ -16,6 +19,14 @@ Cliente;Rafael Vinicius;111.654.524-66;660800-2;55501
 Cliente;Ana Paula Padrao;458.998.885-33;889002-2;66203
 Cliente;Giulietta Capuleto;996.990.880-30;210593-2;77709
 Cliente;Romeu Montequio;624.220.111-43;190823-2;01015
+
+/////String tipo, String nome, String cpf, Integer senha, Double salario
+			,Integer numFuncionarios, String agencia////////
+			
 Gerente;Mahyara Paraquett;567.321.123-44;30000.00;10109;6;002
+
+/////String tipo, String nome, String cpf, Integer senha, Double salario//////
 Diretor;Icaro Gaspar;001.568.334-98;50000.00;54321
+
+////String tipo, String nome, String cpf, Integer senha, Double salario, Integer numUnidades///
 Presidente;Luciana Brand;778.445.662-02;150000.00;93578;15;luBrand@banco.com

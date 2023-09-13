@@ -58,27 +58,28 @@ public class LeituraEscrita {
 							dados[2], Double.parseDouble(dados[3]),dados[4],
 							Double.parseDouble(dados[5]));
 					Conta.mapaContas.put(dados[2], cc);
-					//String tipo, String nome, String cpf, String numConta, Interger senha
+					
+				// map Pessoas //Cliente(String tipo, String nome, String cpf, Integer senha, String numConta)
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
 					
-					// map Cliente
-					Cliente cl = new Cliente(dados[0], dados[1],dados[2],dados[3],Integer.parseInt(dados[4]));
-					Cliente.mapaCliente.put(dados[2],cl);
-					
+					Cliente cl = new Cliente(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),dados[4]);
+					Cliente.mapaPessoas.put(dados[2],cl);
+				
+				//String tipo, String nome, String cpf, Integer senha, Double salario ,Integer numFuncionarios, String agencia			
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
-						Gerente gr = new Gerente(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),
-							Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
-								Funcionarios.mapaFuncionarios.put(dados[2], gr);
+						Gerente gr = new Gerente(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),
+							Double.parseDouble(dados[4]), Integer.parseInt(dados[5]), dados[6]);
+								Funcionarios.mapaPessoas.put(dados[2], gr);
+								
+				//String tipo, String nome, String cpf, Integer senha, Double salario						
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
+					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),Double.parseDouble(dados[4]));
+					Funcionarios.mapaPessoas.put(dados[2], dr);
 					
-					// map Diretor
-					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]));
-					Funcionarios.mapaFuncionarios.put(dados[2], dr);
+				//String tipo, String nome, String cpf, Integer senha, Double salario, Integer numUnidades	
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.PRESIDENTE.getTipoPessoa())) {
-					
-					// map Presidente
-					Presidente pr = new Presidente(dados[0], dados[1], dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
-					Funcionarios.mapaFuncionarios.put(dados[2], pr);
+					Presidente pr = new Presidente(dados[0], dados[1], dados[2],Integer.parseInt(dados[3]),Double.parseDouble(dados[4]), Integer.parseInt(dados[5]));
+					Funcionarios.mapaPessoas.put(dados[2], pr);
 				}
 
 			} else {
@@ -86,8 +87,7 @@ public class LeituraEscrita {
 			}
 		}
 		System.out.println(Conta.mapaContas);
-		System.out.println(Cliente.mapaCliente);
-		System.out.println(Funcionarios.mapaFuncionarios);
+		System.out.println(Cliente.mapaPessoas);
 		
 		// fechar o buff
 		buffRead.close();
