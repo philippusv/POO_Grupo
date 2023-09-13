@@ -1,6 +1,9 @@
 package br.com.poo.banco.contas;
 
+import java.io.IOException;
 import java.util.logging.Level;
+
+import br.com.poo.banco.io.LeituraEscrita;
 
 public class ContaCorrente extends Conta implements IConta{
 
@@ -44,12 +47,12 @@ public class ContaCorrente extends Conta implements IConta{
 	}
 
 	// Método para saque em dinheiro na conta
-
 	@Override
-	public void sacar(double valor) {
+	public void sacar(double valor) throws IOException {
 		if (valor > 0 && valor <= saldo) {
 			saldo -= valor;
 			logger.log(Level.INFO, () -> "Saque de R$" + valor + " realizado com sucesso.");
+			LeituraEscrita.comprovanteSaque(this, valor);
 		} else if (valor > 0 && valor <= (saldo + chequeEspecial)) {
 			saqueChequeEspecial(valor);
 		} else {
@@ -58,14 +61,15 @@ public class ContaCorrente extends Conta implements IConta{
 
 	}
 	//Metodo saque especial
-	private void saqueChequeEspecial(double valor) {
+	private void saqueChequeEspecial(double valor) throws IOException {
 		this.saldo -= valor;
 		logger.log(Level.WARNING, () -> "Saque em cheque especial!\nSaldo disponível: " + saldo);
+		LeituraEscrita.comprovanteSaque(this, valor);
 	}
 	
 	//Método transferir
 	@Override
-	public void transferir(double valor, Conta destino) {
+	public void transferir(double valor, Conta destino) throws IOException {
 		this.sacar(valor);
 		destino.depositar(valor);
 }
