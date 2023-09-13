@@ -2,7 +2,8 @@ package br.com.poo.banco.enums;
 
 public enum ContaEnum {
 	// associo entre() o que eu posso chamar ele
-	CORRENTE("Corrente", 1), POUPANCA("Poupança", 2);
+	CORRENTE("Corrente", 1), 
+	POUPANCA("Poupança", 2);
 
 	private String tipoConta;
 	private int id;

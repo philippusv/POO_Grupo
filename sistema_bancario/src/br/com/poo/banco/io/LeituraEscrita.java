@@ -18,6 +18,7 @@ import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Diretor;
 import br.com.poo.banco.pessoas.Funcionarios;
 import br.com.poo.banco.pessoas.Gerente;
+import br.com.poo.banco.pessoas.Pessoas;
 import br.com.poo.banco.pessoas.Presidente;
 
 public class LeituraEscrita {
@@ -87,7 +88,7 @@ public class LeituraEscrita {
 			}
 		}
 		System.out.println(Conta.mapaContas);
-		System.out.println(Cliente.mapaPessoas);
+		System.out.println(Pessoas.mapaPessoas);
 		
 		// fechar o buff
 		buffRead.close();
@@ -112,6 +113,8 @@ public class LeituraEscrita {
 		sc.close();
 		buffWriter.close();
 	}
+	
+	//RELATÓRIOS
 	
 	// comprovante de saque
 	public static void comprovanteSaque(Conta conta, Double valor) throws IOException {
