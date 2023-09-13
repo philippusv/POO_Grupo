@@ -4,10 +4,8 @@ import java.util.logging.Level;
 
 public class ContaPoupanca extends Conta implements IConta {
 
-	private double rendimento;
 	private double tx = 0.5 / 100;
 	
-
 	// Construtores
 	public ContaPoupanca() {
 		super();
@@ -19,9 +17,10 @@ public class ContaPoupanca extends Conta implements IConta {
 	}
 
 	// getter
-	public double getRendimento() {
-		return rendimento;
+	public double getTx() {
+		return tx;
 	}
+	
 	// metodos
 
 	// Método de simulação de rendimento

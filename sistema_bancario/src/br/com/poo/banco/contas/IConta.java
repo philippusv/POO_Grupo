@@ -7,5 +7,4 @@ public interface IConta {
 	public void sacar(double valor) throws IOException;
 	public void transferir(double valor, Conta destino) throws IOException;
 	
-	
 }

@@ -5,19 +5,20 @@ import java.util.logging.Level;
 
 import br.com.poo.banco.io.LeituraEscrita;
 
-public class ContaCorrente extends Conta implements IConta{
+public class ContaCorrente extends Conta implements IConta {
 
 	private double chequeEspecial;
+	private final double TAXA = 0.10;
+	private final double TAXATRANS = 0.20;
 
 	// Construtor
 	public ContaCorrente() {
 		super();
 	}
 
-	public ContaCorrente(String tipoConta, String numero,String cpfTitular, Double saldo, 
-			String agencia,Double chequeEspecial) {
-		super(tipoConta, numero, cpfTitular, saldo, 
-				agencia);
+	public ContaCorrente(String tipoConta, String numero, String cpfTitular, Double saldo, String agencia,
+			Double chequeEspecial) {
+		super(tipoConta, numero, cpfTitular, saldo, agencia);
 		this.chequeEspecial = chequeEspecial;
 	}
 
@@ -30,20 +31,19 @@ public class ContaCorrente extends Conta implements IConta{
 	public void setChequeEspecial(Double chequeEspecial) {
 		this.chequeEspecial = chequeEspecial;
 	}
-	
-		
-	//metodos
+
+	// metodos
 
 	// Método para deposito em dinheiro na conta
-	
+
 	@Override
 	public void depositar(double valor) {
-        if (valor > 0) {
-            saldo += valor;
-          logger.log(Level.INFO,()->"Depósito na Conta  de R$" + valor + " realizado com sucesso.");
-        } else {
-          logger.warning("O valor do depósito na Conta deve ser maior que zero.");
-        }
+		if (valor > 0) {
+			saldo += valor;
+			logger.log(Level.INFO, () -> "Depósito na Conta  de R$" + valor + " realizado com sucesso.");
+		} else {
+			logger.warning("O valor do depósito na Conta deve ser maior que zero.");
+		}
 	}
 
 	// Método para saque em dinheiro na conta
@@ -60,18 +60,38 @@ public class ContaCorrente extends Conta implements IConta{
 		}
 
 	}
-	//Metodo saque especial
+
+	// Metodo saque especial
 	private void saqueChequeEspecial(double valor) throws IOException {
 		this.saldo -= valor;
 		logger.log(Level.WARNING, () -> "Saque em cheque especial!\nSaldo disponível: " + saldo);
 		LeituraEscrita.comprovanteSaque(this, valor);
 	}
-	
-	//Método transferir
+
+	// Método transferir
 	@Override
 	public void transferir(double valor, Conta destino) throws IOException {
 		this.sacar(valor);
 		destino.depositar(valor);
-}
+	}
+
+	public void Operacoes(double valor, Conta destino, int tipoOperacao) throws IOException {
+		switch (tipoOperacao) {
+		case 1:
+			this.sacar(valor);
+			saldo -= TAXA;
+			break;
+
+		case 2:
+			this.depositar(valor);
+			saldo -= TAXA;
+			break;
+			
+		case 3:
+			this.transferir(valor, destino);
+			saldo -= TAXATRANS;
+			break;
+		}
+	}
 
 }

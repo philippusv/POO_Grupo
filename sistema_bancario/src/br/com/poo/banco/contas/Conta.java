@@ -2,6 +2,7 @@ package br.com.poo.banco.contas;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.com.poo.banco.util.Util;
 
@@ -61,19 +62,19 @@ public abstract class Conta {
 	}
 	
 
-
 	// sobrescreve metodo padrao toString
 	@Override
 	public String toString() {
 		return "Tipo de conta: "+ tipoConta +" Número da conta: " + numero + "\nCPF Titular: " + cpfTitular + "Saldo: " + saldo + "\nAgencia: "+agencia;
 	}
-	
 
-	//Método depositar
+	
 	public void depositar(double valor) {
-		this.saldo += valor;		
+		if (valor > 0) {
+			saldo += valor;
+			logger.log(Level.INFO, () -> "Depósito na poupança  de R$" + valor + " realizado com sucesso.");
+		} else {
+			logger.warning("O valor do depósito na poupança deve ser maior que zero.");
+		}
 	}
-
-	
-
 }
