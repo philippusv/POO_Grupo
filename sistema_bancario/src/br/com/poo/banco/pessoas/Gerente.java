@@ -1,6 +1,6 @@
 package br.com.poo.banco.pessoas;
 
-public class Gerente extends Funcionarios {
+public class Gerente extends Funcionarios implements IFuncionarios{
 
 	// atributos
 	private Integer numFuncionarios;
@@ -18,13 +18,16 @@ public class Gerente extends Funcionarios {
 	}
 
 	// getters
-	
 	public int getNumFuncionarios() {
 		return numFuncionarios;
 	}
 	
 	public String getAgencia() {
 		return agencia;
+	}
+	
+	public double getBonificacao() {
+		return this.getSalario() * 0.10;
 	}
 	
 	// setters
