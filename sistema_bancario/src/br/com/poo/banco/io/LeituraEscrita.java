@@ -12,6 +12,8 @@ import java.util.Scanner;
 import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
+import br.com.poo.banco.enums.ContaEnum;
+import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Diretor;
 import br.com.poo.banco.pessoas.Funcionarios;
@@ -41,7 +43,7 @@ public class LeituraEscrita {
 
 				// equalsIgnoreCase é a mesma coisa que o == "1"--> usamos em comparação de
 				// string
-				if (dados[0].equalsIgnoreCase("POUPANCA")) {
+				if (dados[0].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
 
 					// cria objeto
 					ContaPoupanca cp = new ContaPoupanca(dados[0], dados[1], 
@@ -51,30 +53,30 @@ public class LeituraEscrita {
 					// dentro do array eu coloco a posição onde tem o identificador unico
 					Conta.mapaContas.put(dados[2], cp);
 
-				} else if (dados[0].equalsIgnoreCase("CORRENTE")) {
+				} else if (dados[0].equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
 					ContaCorrente cc = new ContaCorrente(dados[0], dados[1], 
 							dados[2], Double.parseDouble(dados[3]),dados[4],
 							Double.parseDouble(dados[5]));
 					Conta.mapaContas.put(dados[2], cc);
 					//String tipo, String nome, String cpf, String numConta, Interger senha
-				} else if (dados[0].equalsIgnoreCase("CLIENTE")) {
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
 					
 					// map Cliente
 					Cliente cl = new Cliente(dados[0], dados[1],dados[2],dados[3],Integer.parseInt(dados[4]));
 					Cliente.mapaCliente.put(dados[2],cl);
 					
-				} else if (dados[0].equalsIgnoreCase("GERENTE")) {
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
 						Gerente gr = new Gerente(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),
 							Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
 								Funcionarios.mapaFuncionarios.put(dados[2], gr);
-				} else if (dados[0].equalsIgnoreCase("DIRETOR")) {
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
 					
 					// map Diretor
 					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]));
 					Funcionarios.mapaFuncionarios.put(dados[2], dr);
-				} else if (dados[0].equalsIgnoreCase("PRESIDENTE")) {
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.PRESIDENTE.getTipoPessoa())) {
 					
-					// map Diretor
+					// map Presidente
 					Presidente pr = new Presidente(dados[0], dados[1], dados[2],Double.parseDouble(dados[3]),Integer.parseInt(dados[4]), Integer.parseInt(dados[5]), dados[6]);
 					Funcionarios.mapaFuncionarios.put(dados[2], pr);
 				}
