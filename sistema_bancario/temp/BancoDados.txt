@@ -18,13 +18,13 @@ Cliente;Rafael Vinicius;111.654.524-66;55501;660800-2
 Cliente;Ana Paula Padrao;458.998.885-33;66203;889002-2
 Cliente;Giulietta Capuleto;996.990.880-30;77709;210593-2
 Cliente;Romeu Montequio;624.220.111-43;01015;190823-2
+Cliente;Felipe Felps;174.229.781-02;21905;720201-2
 Cliente;Rodrigo Fernandes;427.118.842-15;19235;222325-1
-Cliente;Amelia Curtis;174.229.781-02;38972;720201-2
-Gerente;Mahyara Paraquett;123.456.789-11;10109;30000.00;6;002
-Gerente;Romeu Montequio;624.220.111-43;01015;27500.00;5;003
-Gerente;Rodrigo Fernandes;427.118.842-15;19235;30500.00;6;004
-Diretor;Icaro Gaspar;222.333.444-55;54321;50000.00
-Diretor;Amelia Curtis;174.229.781-02;21905;55000.00
-Diretor;Giulietta Capuleto;996.990.880-30;77709;40000.00
-Presidente;Luciana Brand;320.123.230-92;93578;150000.00;15
-Presidente;Ana Paula Padrao;458.998.885-33;66203;113000.00;8
+Gerente;Amelia Curtis;174.129.881-12;38972;7202.50;18;001
+Gerente;Abigail Maddox;121.426.289-11;10109;3000.00;6;003
+Gerente;America Singer;634.110.111-43;01015;27500.00;5;004
+Gerente;Paula Fernandes;428.158.642-15;19235;30500.00;6;005
+Diretor;Dafiny Brigertom;212.313.414-55;54321;50000.00
+Diretor;Carvalho Filho;776.590.870-30;77709;40000.00
+Presidente;Clarissa Claire;321.153.280-92;93578;150000.00;15
+Presidente;Lucian Lauren;478.898.985-33;66203;113000.00;8
