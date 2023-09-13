@@ -18,7 +18,6 @@ import java.awt.event.ActionEvent;
 public class JMenuCliente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -50,7 +49,7 @@ public class JMenuCliente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Menu Cliente");
-		lblNewLabel.setBounds(152, 10, 132, 32);
+		lblNewLabel.setBounds(144, 15, 166, 48);
 		lblNewLabel.setForeground(new Color(255, 0, 128));
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Impact", Font.PLAIN, 25));
@@ -59,46 +58,35 @@ public class JMenuCliente extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Corrente", "Poupança"}));
 		comboBox.setToolTipText("Conta");
-		comboBox.setBounds(152, 67, 139, 21);
+		comboBox.setBounds(61, 93, 139, 21);
 		contentPane.add(comboBox);
 		
 		JLabel lblNewLabel_1 = new JLabel("Conta:");
-		lblNewLabel_1.setBounds(152, 52, 88, 18);
+		lblNewLabel_1.setBounds(61, 73, 88, 18);
 		contentPane.add(lblNewLabel_1);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Saldo", "Extrato", "Pix", "Transferência"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Saque /Depósito", "Transferência"}));
 		comboBox_1.setToolTipText("operação");
-		comboBox_1.setBounds(152, 114, 139, 21);
+		comboBox_1.setBounds(222, 93, 139, 21);
 		contentPane.add(comboBox_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Operação:");
-		lblNewLabel_1_1.setBounds(152, 98, 88, 18);
+		lblNewLabel_1_1.setBounds(222, 73, 88, 18);
 		contentPane.add(lblNewLabel_1_1);
 		
-		textField = new JTextField();
-		textField.setBounds(154, 162, 140, 21);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Valor R$:");
-		lblNewLabel_1_1_1.setBounds(154, 145, 88, 18);
-		contentPane.add(lblNewLabel_1_1_1);
-		
 		JButton btnNewButton = new JButton("ENTRAR");
-		btnNewButton.setBounds(115, 203, 85, 27);
+		btnNewButton.setBounds(175, 205, 85, 27);
 		contentPane.add(btnNewButton);
 		
-		JButton btnSair = new JButton("SAIR");
-		btnSair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit (0);
-			}
-		});
-		btnSair.setBounds(255, 203, 85, 27);
-		contentPane.add(btnSair);
+		JButton btnSaldo = new JButton("SALDO");
+		btnSaldo.setBounds(115, 141, 85, 27);
+		contentPane.add(btnSaldo);
+		
+		JButton btnExtrato = new JButton("EXTRATO");
+		btnExtrato.setBounds(222, 141, 85, 27);
+		contentPane.add(btnExtrato);
 		
 		
 	}
-
 }
