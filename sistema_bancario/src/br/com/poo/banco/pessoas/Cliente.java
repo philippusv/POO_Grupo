@@ -1,44 +1,26 @@
 package br.com.poo.banco.pessoas;
 
-public class Cliente {
+public class Cliente extends Pessoas{
 
 	// atributos
-	private String nome;
-	private String cpf;
-	private int numConta;
-	protected int senha;
+	private String numConta;
 	
+		
 	// construtores
+	
 	public Cliente() {
-
+		super();
 	}
-
-	public Cliente(String nome, String cpf, int numConta) {
-		this.nome = nome;
-		this.cpf = cpf;
+	
+	public Cliente(String tipo, String nome, String cpf, Integer senha, String numConta) {
+		super(tipo, nome, cpf, senha);
 		this.numConta = numConta;
+		
 	}
 	
 	// getters
-	public String getNome() {
-		return nome;
-	}
-	
-	public String getCpf() {
-		return cpf;
-	}
-	
-	public int getNumConta() {
+	public String getNumConta() {
 		return numConta;
 	}
-		
-	public int getSenha() {
-		return senha;
-	}
-
-	// setters
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
+	
 }

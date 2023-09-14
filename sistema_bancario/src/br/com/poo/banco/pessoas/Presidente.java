@@ -1,34 +1,31 @@
 package br.com.poo.banco.pessoas;
 
 public class Presidente extends Funcionarios{
+	
 	//Atributos
 	
-	private String email;
-	private int numUnidades;
+	private Integer numUnidades;
 	
 	
 	//Construtor
+	
 	public Presidente() {
 		super();
 	}
 	
-	public Presidente(String nome, String cpf, String email, double salario, int numUnidades) {
-		super(nome, cpf, salario);
-		this.email = email;
+	
+	public Presidente(String tipo, String nome, String cpf, Integer senha, Double salario, Integer numUnidades) {
+		super(tipo, nome, cpf, senha, salario);
 		this.numUnidades = numUnidades;
 	}
-	
+		
+
 	//getters
-	public int getnumUnidades() {
+	public Integer getNumUnidades() {
 		return numUnidades;
 	}
-	public String getnEmail() {
-		return email;
-	}
+
+
 	
-	//setters
-	public void setEmail (String email) {
-		this.email = email;
-	}
 
 }

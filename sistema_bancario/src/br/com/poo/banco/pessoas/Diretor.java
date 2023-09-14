@@ -1,25 +1,25 @@
+
 package br.com.poo.banco.pessoas;
 
-public class Diretor extends Funcionarios {
-
+public class Diretor extends Funcionarios implements IFuncionarios{
 		
 	// construtores
 	public Diretor() {
 		super();
 	}
-
-	public Diretor(String nome, String cpf, double salario, String senha) {
-		super(nome, cpf, salario);
-		this.senha = senha;
+	
+	public Diretor(String tipo, String nome, String cpf, Integer senha, Double salario) {
+		super(tipo, nome, cpf, senha, salario);
 	}
-
-	// getters
-	public String getSenha() {
-		return senha;
-	}
-
+	
 	// setters
-	public void setSenha(String senha) {
+	public void setSenha(Integer senha) {
 		this.senha = senha;
 	}
+	
+	//Método bonificação
+	public double getBonificacao() {
+		return this.getSalario() * 0.10 + 1000;
+	}
+	
 }

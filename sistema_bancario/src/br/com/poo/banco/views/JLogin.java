@@ -1,20 +1,25 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JFormattedTextField;
-import javax.swing.JPasswordField;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Set;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.enums.PessoaEnum;
+import br.com.poo.banco.pessoas.Pessoas;
 
 public class JLogin extends JFrame {
 
@@ -22,22 +27,6 @@ public class JLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPasswordField textSenha;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JLogin frame = new JLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -80,12 +69,6 @@ public class JLogin extends JFrame {
 		labelSenha.setFont(new Font("Arial", Font.PLAIN, 10));
 		labelSenha.setBounds(145, 151, 46, 14);
 		contentPane.add(labelSenha);
-		
-		JButton botaoEntrar = new JButton("Entrar");
-		botaoEntrar.setFont(new Font("Arial", Font.PLAIN, 10));
-		botaoEntrar.setBounds(160, 196, 97, 23);
-		contentPane.add(botaoEntrar);
-		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Cliente", "Presidente", "Diretor", "Gerente"}));
 		comboBox.setToolTipText("Cliente");
@@ -93,15 +76,42 @@ public class JLogin extends JFrame {
 		comboBox.setBounds(145, 73, 140, 22);
 		contentPane.add(comboBox);
 		
+				
+		JButton botaoEntrar = new JButton("Entrar");
+		botaoEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cpf = textCpf.getText();
+				Integer senha = Integer.parseInt(new String(textSenha.getPassword()));
+				Pessoas pessoa = Pessoas.mapaPessoas.get(cpf);
+								
+				if (pessoa.getCpf().equals(cpf) && 
+						pessoa.getSenha().equals(senha)) {
+					if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
+						dispose();
+						JMenuCliente jMenuCliente = new JMenuCliente(pessoa);
+						jMenuCliente.setLocationRelativeTo(jMenuCliente);
+						jMenuCliente.setVisible(true);
+						
+					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())){
+						//JMenuGerente
+					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
+						//JMenuDiretor
+					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getTipoPessoa())) {
+						//JMenuPresidente
+					}
+				}
+				
+			}
+		});
+		botaoEntrar.setFont(new Font("Arial", Font.PLAIN, 10));
+		botaoEntrar.setBounds(163, 207, 97, 23);
+		contentPane.add(botaoEntrar);
+		
+		
 		JLabel lblTipoDeUsurio = new JLabel("Tipo de Usuário");
 		lblTipoDeUsurio.setFont(new Font("Arial", Font.PLAIN, 10));
 		lblTipoDeUsurio.setBounds(145, 57, 97, 14);
 		contentPane.add(lblTipoDeUsurio);
-		
-		JButton botaoCadastro = new JButton("Cadastre-se");
-		botaoCadastro.setFont(new Font("Arial", Font.PLAIN, 10));
-		botaoCadastro.setBounds(160, 227, 97, 23);
-		contentPane.add(botaoCadastro);
 		
 //		JLogin jLogin = new JLogin();
 //		jLogin.setLocationRelativeTo(jLogin);
