@@ -88,7 +88,7 @@ public class JLogin extends JFrame {
 						pessoa.getSenha().equals(senha)) {
 					if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
 						dispose();
-						JMenuCliente jMenuCliente = new JMenuCliente();
+						JMenuCliente jMenuCliente = new JMenuCliente(pessoa);
 						jMenuCliente.setLocationRelativeTo(jMenuCliente);
 						jMenuCliente.setVisible(true);
 						

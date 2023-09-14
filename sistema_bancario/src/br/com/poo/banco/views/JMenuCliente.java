@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.poo.banco.pessoas.Pessoas;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
@@ -23,22 +26,23 @@ public class JMenuCliente extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JMenuCliente frame = new JMenuCliente();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					JMenuCliente frame = new JMenuCliente();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 	/**
 	 * Create the frame.
+	 * @param pessoa 
 	 */
-	public JMenuCliente() {
+	public JMenuCliente(Pessoas pessoa) {
 		setTitle("Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -86,6 +90,10 @@ public class JMenuCliente extends JFrame {
 		JButton btnExtrato = new JButton("EXTRATO");
 		btnExtrato.setBounds(222, 141, 106, 27);
 		contentPane.add(btnExtrato);
+		
+		JLabel lblNewLabel_2 = new JLabel("Olá, " + pessoa.getNome()+ "!!");
+		lblNewLabel_2.setBounds(0, 0, 379, 14);
+		contentPane.add(lblNewLabel_2);
 		
 		
 	}
