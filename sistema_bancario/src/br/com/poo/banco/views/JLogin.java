@@ -83,21 +83,46 @@ public class JLogin extends JFrame {
 				String cpf = textCpf.getText();
 				Integer senha = Integer.parseInt(new String(textSenha.getPassword()));
 				Pessoas pessoa = Pessoas.mapaPessoas.get(cpf);
-								
-				if (pessoa.getCpf().equals(cpf) && 
+				
+				/* Verificar se: 
+				 1. CPF é correspondente aos dados usuário,
+				 2. Tipo do usuário é correspondente ao que foi marcado no comboBox,
+				 3. Senha é correspondente aos dados do usuário.
+				 */
+				if (pessoa.getCpf().equals(cpf) &&
+						pessoa.getTipo().equalsIgnoreCase(comboBox.getSelectedItem().toString()) &&
 						pessoa.getSenha().equals(senha)) {
+						
+						//System.out.println(pessoa.getTipo());
+						//System.out.println(comboBox.getSelectedItem().toString());
+					
+					// Abrir Menu de Cliente:
 					if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
 						dispose();
 						JMenuCliente jMenuCliente = new JMenuCliente(pessoa);
 						jMenuCliente.setLocationRelativeTo(jMenuCliente);
 						jMenuCliente.setVisible(true);
-						
+					
+					// Abrir Menu de Gerente:
 					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())){
-						//JMenuGerente
+						dispose();
+						JMenuGerente jMenuGerente = new JMenuGerente(pessoa);
+						jMenuGerente.setLocationRelativeTo(jMenuGerente);
+						jMenuGerente.setVisible(true);
+					
+					// Abrir Menu de Diretor:
 					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
-						//JMenuDiretor
+						dispose();
+						//JMenuDiretor jMenuDiretor = new JMenuDiretor(pessoa);
+						//jMenuDiretor.setLocationRelativeTo(jMenuDiretor);
+						//jMenuDiretor.setVisible(true);
+					
+					// Abrir Menu de Presidente
 					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getTipoPessoa())) {
-						//JMenuPresidente
+						dispose();
+						//JMenuPresidente jMenuPresidente = new JMenuPresidente(pessoa);
+						//jMenuPresidente.setLocationRelativeTo(jMenuPresidente);
+						//jMenuPresidente.setVisible(true);
 					}
 				}
 				
