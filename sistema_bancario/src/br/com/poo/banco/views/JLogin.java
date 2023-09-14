@@ -104,7 +104,7 @@ public class JLogin extends JFrame {
 			}
 		});
 		botaoEntrar.setFont(new Font("Arial", Font.PLAIN, 10));
-		botaoEntrar.setBounds(160, 196, 97, 23);
+		botaoEntrar.setBounds(163, 207, 97, 23);
 		contentPane.add(botaoEntrar);
 		
 		
@@ -112,11 +112,6 @@ public class JLogin extends JFrame {
 		lblTipoDeUsurio.setFont(new Font("Arial", Font.PLAIN, 10));
 		lblTipoDeUsurio.setBounds(145, 57, 97, 14);
 		contentPane.add(lblTipoDeUsurio);
-		
-		JButton botaoCadastro = new JButton("Cadastre-se");
-		botaoCadastro.setFont(new Font("Arial", Font.PLAIN, 10));
-		botaoCadastro.setBounds(160, 227, 97, 23);
-		contentPane.add(botaoCadastro);
 		
 //		JLogin jLogin = new JLogin();
 //		jLogin.setLocationRelativeTo(jLogin);
