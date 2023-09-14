@@ -30,7 +30,8 @@ public class SistemaInterno {
 		JLogin jl = new JLogin();
 		jl.setLocationRelativeTo(jl);
 		jl.setVisible(true);
-
+		
+		
 		// instancia o logger
 		Logger logger = Util.setupLogger();
 //

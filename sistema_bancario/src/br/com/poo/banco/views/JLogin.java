@@ -104,11 +104,11 @@ public class JLogin extends JFrame {
 						jMenuCliente.setVisible(true);
 					
 					// Abrir Menu de Gerente:
-					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())){
-						dispose();
-						JMenuGerente jMenuGerente = new JMenuGerente(pessoa);
-						jMenuGerente.setLocationRelativeTo(jMenuGerente);
-						jMenuGerente.setVisible(true);
+//					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())){
+//						dispose();
+//						JMenuGerente jMenuGerente = new JMenuGerente(pessoa);
+//						jMenuGerente.setLocationRelativeTo(jMenuGerente);
+//						jMenuGerente.setVisible(true);
 					
 					// Abrir Menu de Diretor:
 					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
