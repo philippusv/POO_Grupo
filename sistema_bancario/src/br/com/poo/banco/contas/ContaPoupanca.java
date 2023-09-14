@@ -5,28 +5,30 @@ import java.util.logging.Level;
 public class ContaPoupanca extends Conta implements IConta {
 
 	private double tx = 0.5 / 100;
-	
+
 	// Construtores
 	public ContaPoupanca() {
 		super();
 	}
 
-	public ContaPoupanca(String tipoConta, String numero,String cpfTitular, Double saldo, 
-			String agencia) {
-		super(tipoConta,numero, cpfTitular, saldo, agencia);
+	public ContaPoupanca(String tipoConta, String numero, String cpfTitular, Double saldo, String agencia) {
+		super(tipoConta, numero, cpfTitular, saldo, agencia);
 	}
 
 	// getter
 	public double getTx() {
 		return tx;
 	}
-	
+
 	// metodos
 
 	// Método de simulação de rendimento
-	public void calcularRendimento(double valorInvestido, int dias) {
-		double calculo = valorInvestido * (tx/30)* dias;
+	public String calcularRendimento(double valorInvestido, int dias) {
+		Double calculo = valorInvestido * (tx / 30) * dias;
 		logger.log(Level.INFO, () -> "O seu rendimento vai ser de " + calculo + " reais");
+		String resultado = Double.toString(calculo);
+
+		return resultado;
 	}
 
 	// Método sacar
