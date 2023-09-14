@@ -14,7 +14,6 @@ import br.com.poo.banco.enums.ContaEnum;
 import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Diretor;
-import br.com.poo.banco.pessoas.Funcionarios;
 import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Pessoas;
 import br.com.poo.banco.pessoas.Presidente;
@@ -60,25 +59,24 @@ public class LeituraEscrita {
 					
 				// map Pessoas //Cliente(String tipo, String nome, String cpf, Integer senha, String numConta)
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
-					
 					Cliente cl = new Cliente(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),dados[4]);
-					Cliente.mapaPessoas.put(dados[2],cl);
+					Pessoas.mapaPessoas.put(dados[2],cl);
 				
 				//String tipo, String nome, String cpf, Integer senha, Double salario ,Integer numFuncionarios, String agencia			
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
-						Gerente gr = new Gerente(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),
-							Double.parseDouble(dados[4]), Integer.parseInt(dados[5]), dados[6]);
-								Funcionarios.mapaPessoas.put(dados[2], gr);
+					Gerente gr = new Gerente(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),
+					Double.parseDouble(dados[4]), Integer.parseInt(dados[5]), dados[6]);
+					Pessoas.mapaPessoas.put(dados[2], gr);
 								
 				//String tipo, String nome, String cpf, Integer senha, Double salario						
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
 					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),Double.parseDouble(dados[4]));
-					Funcionarios.mapaPessoas.put(dados[2], dr);
+					Pessoas.mapaPessoas.put(dados[2], dr);
 					
 				//String tipo, String nome, String cpf, Integer senha, Double salario, Integer numUnidades	
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.PRESIDENTE.getTipoPessoa())) {
 					Presidente pr = new Presidente(dados[0], dados[1], dados[2],Integer.parseInt(dados[3]),Double.parseDouble(dados[4]), Integer.parseInt(dados[5]));
-					Funcionarios.mapaPessoas.put(dados[2], pr);
+					Pessoas.mapaPessoas.put(dados[2], pr);
 				}
 
 			} else {
