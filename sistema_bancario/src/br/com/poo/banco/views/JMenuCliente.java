@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.pessoas.Pessoas;
 
 import javax.swing.JLabel;
@@ -83,7 +84,19 @@ public class JMenuCliente extends JFrame {
 		btnNewButton.setBounds(175, 205, 85, 27);
 		contentPane.add(btnNewButton);
 		
+		
 		JButton btnSaldo = new JButton("SALDO");
+		
+		// Chama a tela JSaldo
+		btnSaldo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JSaldo jSaldo = new JSaldo(pessoa);
+				jSaldo.setLocationRelativeTo(jSaldo);
+				jSaldo.setVisible(true);
+			}
+		});
+		
 		btnSaldo.setBounds(115, 141, 85, 27);
 		contentPane.add(btnSaldo);
 		
