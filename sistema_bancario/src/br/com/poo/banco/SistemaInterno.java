@@ -12,6 +12,7 @@ import br.com.poo.banco.pessoas.Cliente;
 import br.com.poo.banco.pessoas.Diretor;
 import br.com.poo.banco.pessoas.Funcionarios;
 import br.com.poo.banco.pessoas.Gerente;
+import br.com.poo.banco.pessoas.Pessoas;
 import br.com.poo.banco.pessoas.Presidente;
 import br.com.poo.banco.util.Util;
 import br.com.poo.banco.views.JLogin;
@@ -23,10 +24,12 @@ public class SistemaInterno {
 		// instanciar o metodo de leitura
 		LeituraEscrita.leitor("BancoDados");
 
-//		// Chamada do login
-//		JLogin jl = new JLogin();
-//		jl.setLocationRelativeTo(jl);
-//		jl.setVisible(true);
+		System.out.println(Pessoas.mapaPessoas.get("174.129.881-12"));
+		
+		// Chamada do login
+		JLogin jl = new JLogin();
+		jl.setLocationRelativeTo(jl);
+		jl.setVisible(true);
 
 		// instancia o logger
 		Logger logger = Util.setupLogger();
