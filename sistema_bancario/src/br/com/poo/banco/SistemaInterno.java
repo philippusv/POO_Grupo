@@ -1,20 +1,15 @@
 package br.com.poo.banco;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.io.LeituraEscrita;
 import br.com.poo.banco.io.RelatorioCliente;
-import br.com.poo.banco.pessoas.Cliente;
-import br.com.poo.banco.pessoas.Diretor;
-import br.com.poo.banco.pessoas.Funcionarios;
-import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Pessoas;
-import br.com.poo.banco.pessoas.Presidente;
 import br.com.poo.banco.util.Util;
+import br.com.poo.banco.views.JCadastroConta;
 import br.com.poo.banco.views.JLogin;
 
 public class SistemaInterno {
@@ -26,11 +21,15 @@ public class SistemaInterno {
 
 		System.out.println(Pessoas.mapaPessoas.get("174.129.881-12"));
 		
-		// Chamada do login
-		JLogin jl = new JLogin();
-		jl.setLocationRelativeTo(jl);
-		jl.setVisible(true);
-		
+//		// Chamada do login
+//		JLogin jl = new JLogin();
+//		jl.setLocationRelativeTo(jl);
+//		jl.setVisible(true);
+//		
+		//Chamada do cadastro de cliente
+		JCadastroConta cc = new JCadastroConta();
+		cc.setLocationRelativeTo(cc);
+		cc.setVisible(true);
 		
 		// instancia o logger
 		Logger logger = Util.setupLogger();

@@ -83,31 +83,25 @@ public class LeituraEscrita {
 				break;
 			}
 		}
-//		System.out.println(Conta.mapaContas);
-//		System.out.println(Pessoas.mapaPessoas);
 		
 		// fechar o buff
 		buffRead.close();
 	}
+public static void escritor(String path, String cliente, String conta) throws IOException {
 
-	public static void escritor(String path) throws IOException {
-		// defino o tipo que vai ser escrito
-		String input;
-		Scanner sc = new Scanner(System.in);
-
-		// abre a permissão de escrita
-		BufferedWriter buffWriter = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
-
-		// recebo os dados do usuário
-		System.out.println("Insira a informação desejada: ");
-		input = sc.nextLine();
-
-		// coloco o que eu recebi no arquivo
-		buffWriter.append(input + "\n");
-
-		// fechar o scan e a permissao
-		sc.close();
-		buffWriter.close();
+		try (BufferedReader buffRead = new BufferedReader(new FileReader(PATH_BASICO+path+EXTENSAO))) {
+			String dado = "";
+			
+			for(int i = 0; i < contador+1; i++) {
+				dado = buffRead.readLine();
+				if(dado == null) {
+					try (BufferedWriter buffWriter = 
+							new BufferedWriter(new FileWriter(PATH_BASICO+path+EXTENSAO,true))) {
+						buffWriter.append(cliente);
+						buffWriter.append(conta);
+					}
+				}
+			}
+		}
 	}
-	
 }
