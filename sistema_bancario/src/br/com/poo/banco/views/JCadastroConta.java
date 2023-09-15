@@ -86,9 +86,9 @@ public class JCadastroConta extends JFrame {
 					menu.setVisible(true);
 				}else {
 					dispose();
-					JCadastroConta menu1 = new JCadastroConta(pessoa);
-					menu1.setLocationRelativeTo(menu1);
-					menu1.setVisible(true);
+					JMenuPresidente mp = new JMenuPresidente(pessoa);
+					mp.setLocationRelativeTo(mp);
+					mp.setVisible(true);
 				}
 				
 			}
@@ -226,9 +226,9 @@ public class JCadastroConta extends JFrame {
 							menu.setLocationRelativeTo(menu);
 							menu.setVisible(true);
 						}else {
-							JCadastroConta menu1 = new JCadastroConta(pessoa);
-							menu1.setLocationRelativeTo(menu1);
-							menu1.setVisible(true);
+							JMenuPresidente mp = new JMenuPresidente(pessoa);
+							mp.setLocationRelativeTo(mp);
+							mp.setVisible(true);
 						}
 						
 						

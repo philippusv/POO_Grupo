@@ -120,9 +120,9 @@ public class JLogin extends JFrame {
 					// Abrir Menu de Presidente
 					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getTipoPessoa())) {
 						dispose();
-						//JMenuPresidente jMenuPresidente = new JMenuPresidente(pessoa);
-						//jMenuPresidente.setLocationRelativeTo(jMenuPresidente);
-						//jMenuPresidente.setVisible(true);
+						JMenuPresidente jMenuPresidente = new JMenuPresidente(pessoa);
+						jMenuPresidente.setLocationRelativeTo(jMenuPresidente);
+						jMenuPresidente.setVisible(true);
 					}
 				}
 				
