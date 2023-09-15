@@ -44,7 +44,6 @@ public class ContaCorrente extends Conta {
 		if (valor > 0 && valor <= saldo) {
 			saldo -= valor;
 			logger.log(Level.INFO, () -> "Saque de R$" + valor + " realizado com sucesso.");
-			RelatorioCliente.comprovanteSaque(this, valor);
 		} else if (valor > 0 && valor <= (saldo + chequeEspecial)) {
 			saqueChequeEspecial(valor);
 		} else {
@@ -56,7 +55,6 @@ public class ContaCorrente extends Conta {
 	private void saqueChequeEspecial(double valor) throws IOException {
 		this.saldo -= valor;
 		logger.log(Level.WARNING, () -> "Saque em cheque especial!\nSaldo disponível: " + saldo);
-		RelatorioCliente.comprovanteSaque(this, valor);
 	}
 
 }

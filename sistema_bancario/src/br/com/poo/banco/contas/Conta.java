@@ -76,7 +76,6 @@ public abstract class Conta {
 	public void sacar(double valor) throws IOException {
 		if (valor > 0 && valor <= saldo) {
 			saldo -= valor;
-			RelatorioCliente.comprovanteSaque(this, valor);
 		} else {
 			logger.warning("Saldo insuficiente ou valor de saque inválido.");
 		}
@@ -101,16 +100,19 @@ public abstract class Conta {
 		case 1:
 			this.sacar(valor);
 			saldo -= TAXA;
+			RelatorioCliente.comprovanteSaque(this, valor);
 			break;
 
 		case 2:
 			this.depositar(valor);
 			saldo -= TAXA;
+			RelatorioCliente.comprovanteDeposito(this, valor);
 			break;
 			
 		case 3:
 			this.transferir(valor, destino);
 			saldo -= TAXATRANS;
+			RelatorioCliente.comprovanteTransferencia(this, valor, destino);
 			break;
 		default:
 			break;
