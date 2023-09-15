@@ -41,15 +41,15 @@ public class SistemaInterno {
 		
 		// System.out.println(Pessoas.mapaPessoas.get("174.129.881-12"));
 
-//		// Chamada do login
-//		JLogin jl = new JLogin();
-//		jl.setLocationRelativeTo(jl);
-//		jl.setVisible(true);
-//		
-		// Chamada do cadastro de cliente
-		JCadastroConta cc = new JCadastroConta();
-		cc.setLocationRelativeTo(cc);
-		cc.setVisible(true);
+		// Chamada do login
+		JLogin jl = new JLogin();
+		jl.setLocationRelativeTo(jl);
+		jl.setVisible(true);
+		
+//		// Chamada do cadastro de cliente
+//		JCadastroConta cc = new JCadastroConta();
+//		cc.setLocationRelativeTo(cc);
+//		cc.setVisible(true);
 
 		// instancia o logger
 		Logger logger = Util.setupLogger();

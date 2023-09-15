@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.enums.PessoaEnum;
@@ -94,18 +95,25 @@ public class JMenuCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (comboBox.getSelectedItem().toString().equalsIgnoreCase("corrente")) {
 					// chama a tela passando a conta corrente
-					ContaCorrente conta = (ContaCorrente) ContaCorrente.mapaContaCorrente.get(pessoa.getCpf());
-					dispose();
-					JSaldo jSaldo = new JSaldo(pessoa, conta);
-					jSaldo.setLocationRelativeTo(jSaldo);
-					jSaldo.setVisible(true);
+					for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+						if (conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+							dispose();
+							JSaldo jSaldo = new JSaldo(pessoa, conta);
+							jSaldo.setLocationRelativeTo(jSaldo);
+							jSaldo.setVisible(true);
+						}
+					}
 				} else {
 					// chama a tela passando a conta poupanca
-					ContaPoupanca conta = (ContaPoupanca) ContaPoupanca.mapaContaPoupanca.get(pessoa.getCpf());
-					dispose();
-					JSaldo jSaldo = new JSaldo(pessoa, conta);
-					jSaldo.setLocationRelativeTo(jSaldo);
-					jSaldo.setVisible(true);
+					for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+						if (!conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+							System.out.println("CORRENTE --> " + conta);
+							dispose();
+							JSaldo jSaldo = new JSaldo(pessoa, conta);
+							jSaldo.setLocationRelativeTo(jSaldo);
+							jSaldo.setVisible(true);
+						}
+					}
 				}
 			}
 		});
