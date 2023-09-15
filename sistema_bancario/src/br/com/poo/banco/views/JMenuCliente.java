@@ -50,7 +50,7 @@ public class JMenuCliente extends JFrame {
 	public JMenuCliente(Pessoas pessoa) {
 		setTitle("Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 301, 407);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -58,7 +58,7 @@ public class JMenuCliente extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Menu Cliente");
-		lblNewLabel.setBounds(144, 15, 166, 48);
+		lblNewLabel.setBounds(64, 21, 166, 48);
 		lblNewLabel.setForeground(new Color(255, 0, 128));
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Impact", Font.PLAIN, 25));
@@ -67,27 +67,27 @@ public class JMenuCliente extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Corrente", "Poupança" }));
 		comboBox.setToolTipText("Conta");
-		comboBox.setBounds(61, 93, 139, 21);
+		comboBox.setBounds(64, 95, 139, 21);
 		contentPane.add(comboBox);
 
 		JLabel lblNewLabel_1 = new JLabel("Conta:");
-		lblNewLabel_1.setBounds(61, 73, 88, 18);
+		lblNewLabel_1.setBounds(64, 80, 88, 18);
 		contentPane.add(lblNewLabel_1);
 
 		// COMBOBOX OPERACAO
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "Saque/Depósito", "Transferência" }));
 		comboBox_1.setToolTipText("operação");
-		comboBox_1.setBounds(222, 93, 139, 21);
+		comboBox_1.setBounds(63, 156, 139, 21);
 		contentPane.add(comboBox_1);
 
 		// LABEL OPERACAO
 		JLabel lblNewLabel_1_1 = new JLabel("Operação:");
-		lblNewLabel_1_1.setBounds(222, 73, 88, 18);
+		lblNewLabel_1_1.setBounds(64, 141, 88, 18);
 		contentPane.add(lblNewLabel_1_1);
 
 		// BOTAO ENTRAR
-		JButton btnNewButton = new JButton("ENTRAR");
+		JButton btnNewButton = new JButton("Executar");
 		// Chama a tela JSaqueDeposito ou JTransf
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -125,11 +125,11 @@ public class JMenuCliente extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(175, 205, 85, 27);
+		btnNewButton.setBounds(78, 202, 102, 27);
 		contentPane.add(btnNewButton);
 
 		// BOTAO SALDO
-		JButton btnSaldo = new JButton("SALDO");
+		JButton btnSaldo = new JButton("Abrir Saldo");
 		// Chama a tela JSaldo 
 		btnSaldo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -157,16 +157,24 @@ public class JMenuCliente extends JFrame {
 				}
 			}
 		});
-		btnSaldo.setBounds(115, 141, 85, 27);
+		btnSaldo.setBounds(78, 240, 102, 27);
 		contentPane.add(btnSaldo);
 
-		JButton btnExtrato = new JButton("EXTRATO");
-		btnExtrato.setBounds(222, 141, 106, 27);
+		JButton btnExtrato = new JButton("Abrir Extrato");
+		btnExtrato.setBounds(78, 278, 102, 27);
 		contentPane.add(btnExtrato);
 
 		JLabel lblNewLabel_2 = new JLabel("Olá, " + pessoa.getNome() + "!!");
 		lblNewLabel_2.setBounds(0, 0, 379, 14);
 		contentPane.add(lblNewLabel_2);
+		
+		JButton botaoSair = new JButton("Sair");
+		botaoSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		botaoSair.setBounds(78, 316, 102, 27);
+		contentPane.add(botaoSair);
 
 	}
 }
