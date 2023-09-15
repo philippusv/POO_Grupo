@@ -1,15 +1,20 @@
 package br.com.poo.banco.contas;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import br.com.poo.banco.io.RelatorioCliente;
 
 public class ContaCorrente extends Conta implements IConta {
-
+	
 	private double chequeEspecial;
 	private final double TAXA = 0.10;
 	private final double TAXATRANS = 0.20;
 
+	//criar map
+	public static Map<String, Conta> mapaContaCorrente = new HashMap<>();
+	
 	// Construtor
 	public ContaCorrente() {
 		super();

@@ -18,7 +18,7 @@ public class SistemaInterno {
 
 		// instanciar o metodo de leitura
 		LeituraEscrita.leitor("BancoDados");
-
+		System.out.println(ContaCorrente.mapaContaCorrente.get("222.333.444-55"));
 		System.out.println(Pessoas.mapaPessoas.get("174.129.881-12"));
 		
 //		// Chamada do login

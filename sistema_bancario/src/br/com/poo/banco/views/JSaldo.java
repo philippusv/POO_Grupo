@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.io.RelatorioCliente;
 import br.com.poo.banco.pessoas.Pessoas;
 
@@ -46,9 +47,7 @@ public class JSaldo extends JFrame {
 	 * Create the frame.
 	 * @param pessoa 
 	 */
-	public JSaldo(Pessoas pessoa) {
-		
-		Conta conta = Conta.mapaContas.get(pessoa.getCpf());
+	public JSaldo(Pessoas pessoa, Conta conta) {
 		
 		DecimalFormat df = new DecimalFormat("#,###.##");
 				
