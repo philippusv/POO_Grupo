@@ -81,14 +81,14 @@ public class JCadastroConta extends JFrame {
 					menuG.setVisible(true);
 				}else if(pessoa.getTipo().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
 					dispose();
-					JCadastroConta menu = new JCadastroConta(pessoa);
-					menu.setLocationRelativeTo(menu);
-					menu.setVisible(true);
+					JMenuDiretor menuD = new JMenuDiretor(pessoa);
+					menuD.setLocationRelativeTo(menuD);
+					menuD.setVisible(true);
 				}else {
 					dispose();
-					JMenuPresidente mp = new JMenuPresidente(pessoa);
-					mp.setLocationRelativeTo(mp);
-					mp.setVisible(true);
+					JMenuPresidente menuP = new JMenuPresidente(pessoa);
+					menuP.setLocationRelativeTo(menuP);
+					menuP.setVisible(true);
 				}
 				
 			}
