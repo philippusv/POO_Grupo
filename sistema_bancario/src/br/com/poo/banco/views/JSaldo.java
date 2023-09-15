@@ -47,9 +47,7 @@ public class JSaldo extends JFrame {
 	 * Create the frame.
 	 * @param pessoa 
 	 */
-	public JSaldo(Pessoas pessoa) {
-		
-		ContaCorrente conta = (ContaCorrente) ContaCorrente.mapaContaCorrente.get(pessoa.getCpf());
+	public JSaldo(Pessoas pessoa, Conta conta) {
 		
 		DecimalFormat df = new DecimalFormat("#,###.##");
 				
