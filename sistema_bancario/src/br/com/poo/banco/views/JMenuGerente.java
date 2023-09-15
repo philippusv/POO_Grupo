@@ -50,7 +50,7 @@ public class JMenuGerente extends JFrame {
 		btnCadastroConta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JCadastroConta jCadastroConta = new JCadastroConta(pessoa); //////////////////////////////////////// wip
+				JCadastroConta jCadastroConta = new JCadastroConta(pessoa);
 				jCadastroConta.setLocationRelativeTo(jCadastroConta);
 				jCadastroConta.setVisible(true);
 			}
