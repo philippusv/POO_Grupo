@@ -22,7 +22,8 @@ public class LeituraEscrita {
 	// constantes
 	static final String PATH_BASICO = "./temp/";
 	static final String EXTENSAO = ".txt";
-
+	static int contador =0;
+	
 	// método estático
 	public static void leitor(String path) throws IOException {
 
@@ -36,6 +37,7 @@ public class LeituraEscrita {
 		while (true) {
 			linha = buffRead.readLine();
 			if (linha != null) {
+				contador++;
 				// sepadação da informação por ; e digo que as linhas são string
 				String[] dados = linha.split(";");
 
