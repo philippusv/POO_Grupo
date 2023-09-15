@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.enums.ContaEnum;
@@ -49,13 +48,13 @@ public class LeituraEscrita {
 
 					// coloca o objeto no map
 					// dentro do array eu coloco a posição onde tem o identificador unico
-					Conta.mapaContas.put(dados[2], cp);
+					ContaPoupanca.mapaContaPoupanca.put(dados[2], cp);
 
 				} else if (dados[0].equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
 					ContaCorrente cc = new ContaCorrente(dados[0], dados[1], 
 							dados[2], Double.parseDouble(dados[3]),dados[4],
 							Double.parseDouble(dados[5]));
-					Conta.mapaContas.put(dados[2], cc);
+					ContaCorrente.mapaContaCorrente.put(dados[2], cc);
 					
 				// map Pessoas //Cliente(String tipo, String nome, String cpf, Integer senha, String numConta)
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {

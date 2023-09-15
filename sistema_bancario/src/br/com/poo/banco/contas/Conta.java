@@ -1,7 +1,5 @@
 package br.com.poo.banco.contas;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.com.poo.banco.util.Util;
@@ -14,9 +12,6 @@ public abstract class Conta {
 	protected String cpfTitular;
 	protected Double saldo;
 	protected String agencia;
-	
-	//criar map
-		public static Map<String, Conta> mapaContas = new HashMap<>();
 
 	// instancia o logger
 	Logger logger = Util.setupLogger();
