@@ -76,7 +76,7 @@ public class LeituraEscrita {
 								
 				//String tipo, String nome, String cpf, Integer senha, Double salario						
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
-					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),Double.parseDouble(dados[4]));
+					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),Double.parseDouble(dados[4]),dados[5],dados [6],dados[7]);
 					Pessoas.mapaPessoas.put(dados[2], dr);
 					
 				//String tipo, String nome, String cpf, Integer senha, Double salario, Integer numUnidades	

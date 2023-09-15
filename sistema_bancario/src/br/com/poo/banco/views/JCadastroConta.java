@@ -49,7 +49,7 @@ public class JCadastroConta extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		lbCadastroCliente.setForeground(new Color(255, 0, 128));
-		lbCadastroCliente.setBounds(157, 9, 227, 29);
+		lbCadastroCliente.setBounds(132, 10, 272, 29);
 		lbCadastroCliente.setFont(new Font("Arial Black", Font.BOLD, 20));
 
 		lbCadastroCliente.setVerticalAlignment(SwingConstants.TOP);

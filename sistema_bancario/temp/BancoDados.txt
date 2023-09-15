@@ -24,7 +24,7 @@ Gerente;Amelia Curtis;174.129.881-12;38972;7202.50;18;001
 Gerente;Abigail Maddox;121.426.289-11;10109;3000.00;6;003
 Gerente;America Singer;634.110.111-43;01015;27500.00;5;004
 Gerente;Paula Fernandes;428.158.642-15;19235;30500.00;6;005
-Diretor;Dafiny Brigertom;212.313.414-55;54321;50000.00
-Diretor;Carvalho Filho;776.590.870-30;77709;40000.00
+Diretor;Dafiny Brigertom;212.313.414-55;54321;50000.00;001;002;003
+Diretor;Carvalho Filho;776.590.870-30;77709;40000.00;003;004;005
 Presidente;Clarissa Claire;321.153.280-92;93578;150000.00;15
 Presidente;Lucian Lauren;478.898.985-33;66203;113000.00;8

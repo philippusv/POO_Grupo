@@ -1,0 +1,27 @@
+************* DADOS DO CLIENTE *************
+Data da operação: 15/09/2023 17:22:17
+*********** FIM DO RELATÓRIO ***********
+************* DADOS DO CLIENTE *************
+CPF:222.333.444-55
+NOME:Icaro Gaspar
+AGÊNCIA:002
+CPF:458.998.885-33
+NOME:Ana Paula Padrao
+AGÊNCIA:003
+CPF:427.118.842-15
+NOME:Rodrigo Fernandes
+AGÊNCIA:003
+CPF:555.444.333-22
+NOME:Paloma Tavares
+AGÊNCIA:003
+CPF:555.444.333-22
+NOME:Paloma Tavares
+AGÊNCIA:002
+CPF:320.123.230-92
+NOME:Luciana Brand
+AGÊNCIA:001
+CPF:123.456.789-11
+NOME:Mahyara Paraquett
+AGÊNCIA:001
+Data da operação: 15/09/2023 17:44:21
+*********** FIM DO RELATÓRIO ***********
