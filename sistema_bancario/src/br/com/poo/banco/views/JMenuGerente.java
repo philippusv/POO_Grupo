@@ -21,10 +21,7 @@ public class JMenuGerente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Create the frame.
-	 * @param pessoa 
-	 */
+	
 	public JMenuGerente(Pessoas pessoa) {
 		setTitle("Sistema Bancário");
 		
@@ -53,7 +50,7 @@ public class JMenuGerente extends JFrame {
 		btnCadastroConta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JCadastroConta jCadastroConta = new JCadastroConta(); //////////////////////////////////////// wip
+				JCadastroConta jCadastroConta = new JCadastroConta(pessoa); //////////////////////////////////////// wip
 				jCadastroConta.setLocationRelativeTo(jCadastroConta);
 				jCadastroConta.setVisible(true);
 			}

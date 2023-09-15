@@ -1,7 +1,6 @@
 package br.com.poo.banco.views;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,30 +26,20 @@ import br.com.poo.banco.enums.ContaEnum;
 import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.io.LeituraEscrita;
 import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Diretor;
+import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Pessoas;
-import javax.swing.JTextField;
+import br.com.poo.banco.pessoas.Presidente;
 
 public class JCadastroConta extends JFrame {
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LeituraEscrita.leitor("BancoDados");
-					JCadastroConta frame = new JCadastroConta();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final JLabel lbCadastroCliente = new JLabel("Cadastro de Cliente");
 	private JPasswordField pswSenhaCliente;
 
 
-	public JCadastroConta(/*Pessoas pessoa*/) {
+	public JCadastroConta(Pessoas pessoa) {
 		setTitle("Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 556, 350);
@@ -83,6 +72,27 @@ public class JCadastroConta extends JFrame {
 		contentPane.add(lbAgencia);
 
 		JButton btnVoltar = new JButton("Cancelar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(pessoa.getTipo().equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
+					dispose();
+					JMenuGerente menuG = new JMenuGerente(pessoa);
+					menuG.setLocationRelativeTo(menuG);
+					menuG.setVisible(true);
+				}else if(pessoa.getTipo().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
+					dispose();
+					JCadastroConta menu = new JCadastroConta(pessoa);
+					menu.setLocationRelativeTo(menu);
+					menu.setVisible(true);
+				}else {
+					dispose();
+					JCadastroConta menu1 = new JCadastroConta(pessoa);
+					menu1.setLocationRelativeTo(menu1);
+					menu1.setVisible(true);
+				}
+				
+			}
+		});
 		btnVoltar.setFont(new Font("Arial", Font.PLAIN, 10));
 		btnVoltar.setBounds(157, 259, 89, 23);
 		contentPane.add(btnVoltar);
@@ -113,11 +123,24 @@ public class JCadastroConta extends JFrame {
 		JFormattedTextField txCPF = new JFormattedTextField();
 		txCPF.setBounds(192, 88, 134, 20);
 		contentPane.add(txCPF);
-
-		JLabel User = new JLabel(/*GERENTE / DIRETOR / PRESIDENTE*/);
-		User.setBounds(20, 212, 46, 14);
-		contentPane.add(User);
-
+		
+		if(pessoa.getTipo().equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
+			Gerente gerente = (Gerente) pessoa;
+			JLabel User = new JLabel(gerente.getNome());
+			User.setBounds(20, 212, 182, 14);
+			contentPane.add(User);
+		}else if(pessoa.getTipo().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
+			Diretor diretor = (Diretor) pessoa;
+			JLabel User = new JLabel(diretor.getNome());
+			User.setBounds(20, 212, 182, 14);
+			contentPane.add(User);
+		}else {
+			Presidente presidente = (Presidente) pessoa;
+			JLabel User = new JLabel(presidente.getNome());
+			User.setBounds(20, 212, 182, 14);
+			contentPane.add(User);
+		}
+		
 		JLabel lbFuncionario = new JLabel("Responsável pela abertura:");
 		lbFuncionario.setHorizontalAlignment(SwingConstants.LEFT);
 		lbFuncionario.setBounds(10, 181, 182, 14);
@@ -193,10 +216,22 @@ public class JCadastroConta extends JFrame {
 					try {
 						LeituraEscrita.escritor("BancoDados", cliente, conta);
 						dispose();
-						//Aqui entra o menu do funcionario
-						JCadastroConta menu = new JCadastroConta();
-						menu.setLocationRelativeTo(menu);
-						menu.setVisible(true);
+						
+						if(pessoa.getTipo().equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
+							JMenuGerente menuG = new JMenuGerente(pessoa);
+							menuG.setLocationRelativeTo(menuG);
+							menuG.setVisible(true);
+						}else if(pessoa.getTipo().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
+							JCadastroConta menu = new JCadastroConta(pessoa);
+							menu.setLocationRelativeTo(menu);
+							menu.setVisible(true);
+						}else {
+							JCadastroConta menu1 = new JCadastroConta(pessoa);
+							menu1.setLocationRelativeTo(menu1);
+							menu1.setVisible(true);
+						}
+						
+						
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
