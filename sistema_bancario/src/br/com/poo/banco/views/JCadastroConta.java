@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -178,13 +179,13 @@ public class JCadastroConta extends JFrame {
 					if (tipoConta.contains(ContaEnum.CORRENTE.getTipoConta())) {
 						ContaCorrente cc = new ContaCorrente(tipoConta, numConta, cpf, Double.parseDouble(saldo),
 								agencia, Double.parseDouble(chequeEspecial));
-						Conta.mapaContas.put(cpf, cc);
+						Conta.mapaContas.computeIfAbsent(cpf, k -> new ArrayList<>()).add(cc);
 						conta = "\n" + ContaEnum.CORRENTE.getTipoConta() + ";" + numConta + ";" + cpf + ";" + saldo
 								+ ";" + agencia + ";" + chequeEspecial + ";";
 					} else if (tipoConta.contains(ContaEnum.POUPANCA.getTipoConta())) {
 						ContaPoupanca cp = new ContaPoupanca(tipoConta, numConta, cpf, Double.parseDouble(saldo),
 								agencia);
-						Conta.mapaContas.put(cpf, cp);
+						Conta.mapaContas.computeIfAbsent(cpf, k -> new ArrayList<>()).add(cp);
 						conta = "\n" + ContaEnum.POUPANCA.name() + ";" + numConta + ";" + cpf + ";" + saldo
 								+ ";" + agencia + ";";
 					}
