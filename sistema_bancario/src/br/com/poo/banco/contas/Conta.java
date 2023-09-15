@@ -1,33 +1,38 @@
 package br.com.poo.banco.contas;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.com.poo.banco.util.Util;
 
 public abstract class Conta {
-	
-	//Atributos
+
+	// Atributos
 	private String tipoConta;
 	private String numero;
 	protected String cpfTitular;
 	protected Double saldo;
 	protected String agencia;
 
+	//criar map
+	public static HashMap<String, List<Conta>> mapaContas = new HashMap<>();
+	
 	// instancia o logger
 	Logger logger = Util.setupLogger();
-	
+
 	// construtores
 	protected Conta() {
 	}
-	
-	public Conta(String tipoConta, String numero,String cpfTitular, Double saldo, 
-			String agencia) {
+
+	public Conta(String tipoConta, String numero, String cpfTitular, Double saldo, String agencia) {
 		this.tipoConta = tipoConta;
 		this.numero = numero;
 		this.cpfTitular = cpfTitular;
 		this.saldo = saldo;
 		this.agencia = agencia;
-		
+
 		Util.customizer();
 	}
 
@@ -35,6 +40,7 @@ public abstract class Conta {
 	public double getSaldo() {
 		return saldo;
 	}
+
 	public String getCpfTitular() {
 		return cpfTitular;
 	}
@@ -42,7 +48,7 @@ public abstract class Conta {
 	public String getAgencia() {
 		return agencia;
 	}
-	
+
 	public String getTipoConta() {
 		return tipoConta;
 	}
@@ -55,15 +61,14 @@ public abstract class Conta {
 	public void setCpfTitular(String cpfTitular) {
 		this.cpfTitular = cpfTitular;
 	}
-	
 
 	// sobrescreve metodo padrao toString
 	@Override
 	public String toString() {
-		return "Tipo de conta: "+ tipoConta +" Número da conta: " + numero + "\nCPF Titular: " + cpfTitular + "Saldo: " + saldo + "\nAgencia: "+agencia;
+		return "Tipo de conta: " + tipoConta + " Número da conta: " + numero + "\nCPF Titular: " + cpfTitular
+				+ "Saldo: " + saldo + "\nAgencia: " + agencia;
 	}
 
-	
 	public void depositar(double valor) {
 		if (valor > 0) {
 			saldo += valor;

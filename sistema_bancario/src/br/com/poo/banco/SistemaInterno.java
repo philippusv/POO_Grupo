@@ -1,8 +1,10 @@
 package br.com.poo.banco;
 
+import java.awt.List;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.io.LeituraEscrita;
@@ -18,19 +20,37 @@ public class SistemaInterno {
 
 		// instanciar o metodo de leitura
 		LeituraEscrita.leitor("BancoDados");
-		System.out.println(ContaCorrente.mapaContaCorrente.get("222.333.444-55"));
-		System.out.println(Pessoas.mapaPessoas.get("174.129.881-12"));
+		System.out.println(Conta.mapaContas.get("555.444.333-22"));
+		// List<Conta> contas = Conta.mapaContas.get("555.444.333-22");
+
 		
+		/*
+		  Como acessar contas com o mesmo cpf??
+		  Como o mapa recebe um List<Conta>, podemos iterar sobre 
+		  a lista de contas associadas a um cpf e verificar o tipo de cada conta.
+		  Assim podemos escolher qual conta queremos acessar.
+		*/
+		
+		for (Conta conta : Conta.mapaContas.get("555.444.333-22")) {
+			if (conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+				System.out.println("CORRENTE --> " + conta);
+			}else {
+				System.out.println("POUPANÇA--> " + conta);
+			}
+		}
+		
+		// System.out.println(Pessoas.mapaPessoas.get("174.129.881-12"));
+
 //		// Chamada do login
 //		JLogin jl = new JLogin();
 //		jl.setLocationRelativeTo(jl);
 //		jl.setVisible(true);
 //		
-		//Chamada do cadastro de cliente
+		// Chamada do cadastro de cliente
 		JCadastroConta cc = new JCadastroConta();
 		cc.setLocationRelativeTo(cc);
 		cc.setVisible(true);
-		
+
 		// instancia o logger
 		Logger logger = Util.setupLogger();
 //
@@ -45,14 +65,13 @@ public class SistemaInterno {
 //		logger.log(Level.INFO, () -> "Conta 1: " + conta1.getSaldo());
 
 		// Instancia conta corrente 1
-		ContaCorrente cc1 = new ContaCorrente("Corrente", "660800-2", "111.654.524-66", 1000.00, "005", 700.0);
-		// TESTE RELATÓRIOS CLIENTE
-		RelatorioCliente.comprovanteSaque(cc1, 100.00);
-		RelatorioCliente.comprovanteTransferencia(cc1, 200.00, conta1);
-		RelatorioCliente.tributacaoCC(cc1, 1, 1, 2);
-		RelatorioCliente.comprovanteDeposito(cc1, 200.00);
-		
-		
+//		ContaCorrente cc1 = new ContaCorrente("Corrente", "660800-2", "111.654.524-66", 1000.00, "005", 700.0);
+//		// TESTE RELATÓRIOS CLIENTE
+//		RelatorioCliente.comprovanteSaque(cc1, 100.00);
+//		RelatorioCliente.comprovanteTransferencia(cc1, 200.00, conta1);
+//		RelatorioCliente.tributacaoCC(cc1, 1, 1, 2);
+//		RelatorioCliente.comprovanteDeposito(cc1, 200.00);
+
 //		logger.log(Level.INFO, () -> "" + cc1.getSaldo());
 //		logger.log(Level.INFO, () -> "Conta Corrente 1: " + cc1.getSaldo());
 //		cc1.Operacoes(100, null, 1);
@@ -60,13 +79,13 @@ public class SistemaInterno {
 //		logger.log(Level.INFO, () -> "" + conta1.getSaldo());
 //
 //		// Instancia conta poupanca 1
-		ContaPoupanca cp1 = new ContaPoupanca("Poupança", "123456-1", "123.456.789-11", 30000.00, "001");
-		// TESTE RELATÓRIOS CLIENTE
-		RelatorioCliente.comprovanteSaque(cp1, 100.00);
-		RelatorioCliente.rendimentoCP(cp1, 1000.00, 30);
-		RelatorioCliente.saldo(cp1);
-		cp1.sacar(20000.00);
-		RelatorioCliente.saldo(cp1);
+//		ContaPoupanca cp1 = new ContaPoupanca("Poupança", "123456-1", "123.456.789-11", 30000.00, "001");
+//		// TESTE RELATÓRIOS CLIENTE
+//		RelatorioCliente.comprovanteSaque(cp1, 100.00);
+//		RelatorioCliente.rendimentoCP(cp1, 1000.00, 30);
+//		RelatorioCliente.saldo(cp1);
+//		cp1.sacar(20000.00);
+//		RelatorioCliente.saldo(cp1);
 //		logger.log(Level.INFO, () -> "Conta Poucança 1: " + cp1.getSaldo());
 //		cp1.calcularRendimento(1000.0, 30);
 //
@@ -101,7 +120,6 @@ public class SistemaInterno {
 //
 //		Presidente presidente1 = new Presidente("Presidente", "Lu", "332.554.889-96", 93578, 250000.00, 15);
 //		logger.log(Level.INFO, () -> "Presidente 1: " + presidente1.getNome());
-
 
 	}
 

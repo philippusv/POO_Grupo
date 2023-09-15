@@ -8,9 +8,6 @@ public class ContaPoupanca extends Conta implements IConta {
 	
 	private double tx = 0.5 / 100;
 
-	//criar map
-	public static Map<String, Conta> mapaContaPoupanca = new HashMap<>();
-
 	// Construtores
 	public ContaPoupanca() {
 		super();

@@ -11,9 +11,6 @@ public class ContaCorrente extends Conta implements IConta {
 	private double chequeEspecial;
 	private final double TAXA = 0.10;
 	private final double TAXATRANS = 0.20;
-
-	//criar map
-	public static Map<String, Conta> mapaContaCorrente = new HashMap<>();
 	
 	// Construtor
 	public ContaCorrente() {

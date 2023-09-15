@@ -5,8 +5,10 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.enums.ContaEnum;
@@ -21,7 +23,7 @@ public class LeituraEscrita {
 	// constantes
 	static final String PATH_BASICO = "./temp/";
 	static final String EXTENSAO = ".txt";
-	static int contador =0;
+	static int contador = 0;
 	
 	// método estático
 	public static void leitor(String path) throws IOException {
@@ -42,21 +44,22 @@ public class LeituraEscrita {
 
 				// equalsIgnoreCase é a mesma coisa que o == "1"--> usamos em comparação de
 				// string
-				if (dados[0].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
+				if (dados[0].equalsIgnoreCase(ContaEnum.POUPANCA.name())) {
 
 					// cria objeto
 					ContaPoupanca cp = new ContaPoupanca(dados[0], dados[1], 
 							dados[2], Double.parseDouble(dados[3]),dados[4]);
+					
+					// insere a conta poupanca no mapa
+					Conta.mapaContas.computeIfAbsent(dados[2], k -> new ArrayList<>()).add(cp);
 
-					// coloca o objeto no map
-					// dentro do array eu coloco a posição onde tem o identificador unico
-					ContaPoupanca.mapaContaPoupanca.put(dados[2], cp);
-
-				} else if (dados[0].equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+				} else if (dados[0].equalsIgnoreCase(ContaEnum.CORRENTE.name())) {
 					ContaCorrente cc = new ContaCorrente(dados[0], dados[1], 
 							dados[2], Double.parseDouble(dados[3]),dados[4],
 							Double.parseDouble(dados[5]));
-					ContaCorrente.mapaContaCorrente.put(dados[2], cc);
+					
+					// insere a conta corrente no mapa
+					Conta.mapaContas.computeIfAbsent(dados[2], k -> new ArrayList<>()).add(cc);
 					
 				// map Pessoas //Cliente(String tipo, String nome, String cpf, Integer senha, String numConta)
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
