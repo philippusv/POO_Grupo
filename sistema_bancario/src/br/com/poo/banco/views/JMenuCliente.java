@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.contas.ContaCorrente;
+import br.com.poo.banco.contas.ContaPoupanca;
+import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.pessoas.Pessoas;
 
 import javax.swing.JLabel;
@@ -40,7 +44,8 @@ public class JMenuCliente extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @param pessoa 
+	 * 
+	 * @param pessoa
 	 */
 	public JMenuCliente(Pessoas pessoa) {
 		setTitle("Sistema Bancário");
@@ -51,50 +56,78 @@ public class JMenuCliente extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Menu Cliente");
 		lblNewLabel.setBounds(144, 15, 166, 48);
 		lblNewLabel.setForeground(new Color(255, 0, 128));
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Impact", Font.PLAIN, 25));
 		contentPane.add(lblNewLabel);
-		
+
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Corrente", "Poupança"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Corrente", "Poupança" }));
 		comboBox.setToolTipText("Conta");
 		comboBox.setBounds(61, 93, 139, 21);
 		contentPane.add(comboBox);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Conta:");
 		lblNewLabel_1.setBounds(61, 73, 88, 18);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Saque /Depósito", "Transferência"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "Saque /Depósito", "Transferência" }));
 		comboBox_1.setToolTipText("operação");
 		comboBox_1.setBounds(222, 93, 139, 21);
 		contentPane.add(comboBox_1);
-		
+
 		JLabel lblNewLabel_1_1 = new JLabel("Operação:");
 		lblNewLabel_1_1.setBounds(222, 73, 88, 18);
 		contentPane.add(lblNewLabel_1_1);
-		
+
 		JButton btnNewButton = new JButton("ENTRAR");
 		btnNewButton.setBounds(175, 205, 85, 27);
 		contentPane.add(btnNewButton);
-		
+
 		JButton btnSaldo = new JButton("SALDO");
+
+		// Chama a tela JSaldo
+		btnSaldo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboBox.getSelectedItem().toString().equalsIgnoreCase("corrente")) {
+					// chama a tela passando a conta corrente
+					for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+						if (conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+							dispose();
+							JSaldo jSaldo = new JSaldo(pessoa, conta);
+							jSaldo.setLocationRelativeTo(jSaldo);
+							jSaldo.setVisible(true);
+						}
+					}
+				} else {
+					// chama a tela passando a conta poupanca
+					for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+						if (!conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+							System.out.println("CORRENTE --> " + conta);
+							dispose();
+							JSaldo jSaldo = new JSaldo(pessoa, conta);
+							jSaldo.setLocationRelativeTo(jSaldo);
+							jSaldo.setVisible(true);
+						}
+					}
+				}
+			}
+		});
+
 		btnSaldo.setBounds(115, 141, 85, 27);
 		contentPane.add(btnSaldo);
-		
+
 		JButton btnExtrato = new JButton("EXTRATO");
 		btnExtrato.setBounds(222, 141, 106, 27);
 		contentPane.add(btnExtrato);
-		
-		JLabel lblNewLabel_2 = new JLabel("Olá, " + pessoa.getNome()+ "!!");
+
+		JLabel lblNewLabel_2 = new JLabel("Olá, " + pessoa.getNome() + "!!");
 		lblNewLabel_2.setBounds(0, 0, 379, 14);
 		contentPane.add(lblNewLabel_2);
-		
-		
+
 	}
 }

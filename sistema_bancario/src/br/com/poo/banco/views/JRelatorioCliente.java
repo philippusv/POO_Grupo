@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 
-public class RelatorioCliente extends JFrame {
+public class JRelatorioCliente extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tabelaCliente;
@@ -24,7 +24,7 @@ public class RelatorioCliente extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RelatorioCliente frame = new RelatorioCliente();
+					JRelatorioCliente frame = new JRelatorioCliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +36,7 @@ public class RelatorioCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RelatorioCliente() {
+	public JRelatorioCliente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
