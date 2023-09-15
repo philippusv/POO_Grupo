@@ -74,23 +74,63 @@ public class JMenuCliente extends JFrame {
 		lblNewLabel_1.setBounds(61, 73, 88, 18);
 		contentPane.add(lblNewLabel_1);
 
+		// COMBOBOX OPERACAO
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "Saque /Depósito", "Transferência" }));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "Saque/Depósito", "Transferência" }));
 		comboBox_1.setToolTipText("operação");
 		comboBox_1.setBounds(222, 93, 139, 21);
 		contentPane.add(comboBox_1);
 
+		// LABEL OPERACAO
 		JLabel lblNewLabel_1_1 = new JLabel("Operação:");
 		lblNewLabel_1_1.setBounds(222, 73, 88, 18);
 		contentPane.add(lblNewLabel_1_1);
 
+		// BOTAO ENTRAR
 		JButton btnNewButton = new JButton("ENTRAR");
+		// Chama a tela JSaqueDeposito ou JTransf
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Conta contaSelecionada = null;
+				String op = null;
+				
+				// Definindo a conta selecionada
+				if (comboBox.getSelectedItem().toString().equalsIgnoreCase("corrente")) {
+					// conta corrente selecionada
+					for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+						if (conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+							contaSelecionada = conta;
+						}
+					}
+				} else {
+					// conta poupanca selecionada
+					for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+						if (!conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+							contaSelecionada = conta;
+						}
+					}
+				}
+				
+				// Chamando tela JSaqueDeposito ou JTransf
+				if(comboBox_1.getSelectedItem().toString().equalsIgnoreCase("Saque/Depósito")) {
+					dispose();
+					JSaqueDeposito jSaqueDeposito = new JSaqueDeposito(pessoa, contaSelecionada);
+					jSaqueDeposito.setLocationRelativeTo(jSaqueDeposito);
+					jSaqueDeposito.setVisible(true);
+				}else {
+					JTransf jTransf = new JTransf(pessoa, contaSelecionada);
+					jTransf.setLocationRelativeTo(jTransf);
+					jTransf.setVisible(true);
+				}
+				
+			}
+		});
 		btnNewButton.setBounds(175, 205, 85, 27);
 		contentPane.add(btnNewButton);
 
+		// BOTAO SALDO
 		JButton btnSaldo = new JButton("SALDO");
-
-		// Chama a tela JSaldo
+		// Chama a tela JSaldo 
 		btnSaldo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboBox.getSelectedItem().toString().equalsIgnoreCase("corrente")) {
@@ -117,7 +157,6 @@ public class JMenuCliente extends JFrame {
 				}
 			}
 		});
-
 		btnSaldo.setBounds(115, 141, 85, 27);
 		contentPane.add(btnSaldo);
 

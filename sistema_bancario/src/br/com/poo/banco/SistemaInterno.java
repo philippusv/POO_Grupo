@@ -20,7 +20,7 @@ public class SistemaInterno {
 
 		// instanciar o metodo de leitura
 		LeituraEscrita.leitor("BancoDados");
-		System.out.println(Conta.mapaContas.get("555.444.333-22"));
+		System.out.println(Conta.mapaNumContas.get("200000-1"));
 		// List<Conta> contas = Conta.mapaContas.get("555.444.333-22");
 
 		
@@ -31,13 +31,13 @@ public class SistemaInterno {
 		  Assim podemos escolher qual conta queremos acessar.
 		*/
 		
-		for (Conta conta : Conta.mapaContas.get("555.444.333-22")) {
-			if (conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
-				System.out.println("CORRENTE --> " + conta);
-			}else {
-				System.out.println("POUPANÇA--> " + conta);
-			}
-		}
+//		for (Conta conta : Conta.mapaContas.get("555.444.333-22")) {
+//			if (conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+//				System.out.println("CORRENTE --> " + conta);
+//			}else {
+//				System.out.println("POUPANÇA--> " + conta);
+//			}
+//		}
 		
 		// System.out.println(Pessoas.mapaPessoas.get("174.129.881-12"));
 
