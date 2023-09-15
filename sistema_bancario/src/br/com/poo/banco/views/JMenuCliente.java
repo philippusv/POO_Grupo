@@ -125,7 +125,7 @@ public class JMenuCliente extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(78, 202, 102, 27);
+		btnNewButton.setBounds(64, 202, 139, 27);
 		contentPane.add(btnNewButton);
 
 		// BOTAO SALDO
@@ -157,11 +157,11 @@ public class JMenuCliente extends JFrame {
 				}
 			}
 		});
-		btnSaldo.setBounds(78, 240, 102, 27);
+		btnSaldo.setBounds(64, 240, 139, 27);
 		contentPane.add(btnSaldo);
 
 		JButton btnExtrato = new JButton("Abrir Extrato");
-		btnExtrato.setBounds(78, 278, 102, 27);
+		btnExtrato.setBounds(64, 278, 139, 27);
 		contentPane.add(btnExtrato);
 
 		JLabel lblNewLabel_2 = new JLabel("Olá, " + pessoa.getNome() + "!!");

@@ -60,7 +60,7 @@ public class JMenuDiretor extends JFrame {
 			
 			});
 		
-		btnNewButton.setBounds(39, 232, 99, 21);
+		btnNewButton.setBounds(0, 232, 115, 21);
 		contentPane.add(btnNewButton);
 		
 		JButton btnCadastrar_1 = new JButton("Cadastrar Gerente");
@@ -68,7 +68,7 @@ public class JMenuDiretor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCadastrar_1.setBounds(148, 232, 119, 21);
+		btnCadastrar_1.setBounds(125, 232, 142, 21);
 		contentPane.add(btnCadastrar_1);
 		
 		JButton btnCadastrar = new JButton(" Cadastrar Cliente");
@@ -81,7 +81,7 @@ public class JMenuDiretor extends JFrame {
 				
 			}
 		});
-		btnCadastrar.setBounds(276, 232, 115, 21);
+		btnCadastrar.setBounds(277, 232, 147, 21);
 		contentPane.add(btnCadastrar);
 		
 		JScrollPane scrollPane = new JScrollPane();
