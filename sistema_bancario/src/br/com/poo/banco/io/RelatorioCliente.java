@@ -157,15 +157,12 @@ public class RelatorioCliente {
 	public static void rendimentoCP(ContaPoupanca conta, double valorInvestido, int dias) throws IOException {
 		DecimalFormat df = new DecimalFormat("#,###.##");
 		
-		String path = "Rendimento Poupança" + "_" + conta.getNumero() + "_" + conta.getCpfTitular();
-		
+		String path = "Rendimento Poupanca";
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
 		
 		String rendimento = conta.calcularRendimento(valorInvestido, dias);
 		
 		buffWrite.append("************* RELATORIO DE RENDIMENTO DA CP *************" + "\n");
-		buffWrite.append("CPF do Titular: " + conta.getCpfTitular() + "\n");
-		buffWrite.append("Conta: " + conta.getNumero() + "\n");
 		buffWrite.append("Investimento Inicial: R$" + df.format(valorInvestido) + "\n");
 		buffWrite.append("Quantidade de dias: " + dias + " dias\n");
 		buffWrite.append("O seu rendimento vai ser de " + rendimento + " reais\n");

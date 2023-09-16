@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaPoupanca;
+import br.com.poo.banco.io.RelatorioCliente;
 import br.com.poo.banco.pessoas.Pessoas;
 
 import javax.swing.JLabel;
@@ -78,7 +79,9 @@ public class JRendimento extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String valor = txvalor.getText();
 				String dias = txdias.getText();
+				
 				ContaPoupanca conta = new ContaPoupanca();
+				
 				    				    				
 				if(valor.isEmpty() || dias.isEmpty()) {
 					JOptionPane.showMessageDialog(botao, "Preencha todos os campos.");
@@ -86,9 +89,13 @@ public class JRendimento extends JFrame {
 				}else {
 					double valorD = Double.parseDouble(valor);
 				    int valorI = Integer.parseInt(dias);
-					JOptionPane.showMessageDialog(botao, "Seu rendimento será de: R$"
-							+conta.calcularRendimento(valorD, valorI));
-						
+					JOptionPane.showMessageDialog(botao, "Seu rendimento será de: R$ "
+							+ conta.calcularRendimento(valorD, valorI));
+						try {
+							RelatorioCliente.rendimentoCP(conta, valorD, valorI);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 						
 					} 
 				}
