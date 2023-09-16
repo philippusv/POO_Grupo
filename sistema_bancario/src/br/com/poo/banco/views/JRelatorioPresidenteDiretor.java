@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,10 +17,12 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.pessoas.Diretor;
 import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Pessoas;
 import br.com.poo.banco.pessoas.Presidente;
+import br.com.poo.banco.enums.PessoaEnum;
 
 public class JRelatorioPresidenteDiretor extends JFrame {
 
@@ -44,29 +48,42 @@ public class JRelatorioPresidenteDiretor extends JFrame {
 		scrollPane.setBounds(10, 31, 479, 229);
 		contentPane.add(scrollPane);
 		
+		
+		
 		tableDiretorAgGer = new JTable();
-		tableDiretorAgGer.setFont(new Font("Arial", Font.PLAIN, 12));
-		scrollPane.setViewportView(tableDiretorAgGer);
 		tableDiretorAgGer.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
 			},
 			new String[] {
-				"Nome_Diretor", "Num_Ag\u00EAncia", "Nome_Gerente"
+				"New column", "New column", "New column"
 			}
 		));
+		tableDiretorAgGer.setFont(new Font("Arial", Font.PLAIN, 12));
+		scrollPane.setViewportView(tableDiretorAgGer);
+		/*for (Map.Entry<String, Pessoas> diretoria : Pessoas.mapaPessoas.entrySet()){
+			if(diretoria.getValue().getTipo().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())){
+				String[] agencias = {
+						((Diretor) diretoria.getValue()).getagencia1(),	
+						((Diretor) diretoria.getValue()).getagencia2(),
+						((Diretor) diretoria.getValue()).getagencia3()
+				};
+				for(String agencia: agencias) {
+					for(Map.Entry<String, Pessoas> gerentes : Pessoas.mapaPessoas.entrySet()) {
+						if(((Gerente)gerentes.getValue()).getAgencia().equalsIgnoreCase(agencia)) {
+							String[] informacoes = {
+									diretoria.getValue().getNome(),
+									agencia,
+									gerentes.getValue().getNome()
+							};
+							((DefaultTableModel) tableDiretorAgGer.getModel()).addRow(informacoes);
+						}
+					}
+				}
+			}
+
+		}*/
+
 								
 		btnGerarRelatorio = new JButton("Gerar Relatorio");
 		btnGerarRelatorio.addActionListener(new ActionListener() {

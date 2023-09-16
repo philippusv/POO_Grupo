@@ -12,6 +12,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.pessoas.Pessoas;
+import br.com.poo.banco.io.RelatorioPresidente;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
 
 public class JRelatorioPresidenteCapital extends JFrame {
 
@@ -48,6 +52,16 @@ public class JRelatorioPresidenteCapital extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnGerarRelatorio = new JButton("Gerar Relatório");
+		btnGerarRelatorio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					textField.setText("" + RelatorioPresidente.capitalArmazenado(pessoa));
+					} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnGerarRelatorio.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnGerarRelatorio.setBounds(86, 125, 153, 23);
 		contentPane.add(btnGerarRelatorio);
