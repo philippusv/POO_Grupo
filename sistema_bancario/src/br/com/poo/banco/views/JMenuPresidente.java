@@ -91,10 +91,10 @@ public class JMenuPresidente extends JFrame {
 					cc.setVisible(true);
 				}else if(opcao.equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
 					dispose();
-				/*	JCadastroGerente cg = new JCadastroGerente(pessoa);
+					JCadastroGerente cg = new JCadastroGerente(pessoa);
 					cg.setLocationRelativeTo(cg);
 					cg.setVisible(true);
-					*/
+					
 				}else if(opcao.equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
 					dispose();
 				/*	JCadastroDiretor cd = new JCadastroDiretor(pessoa);
@@ -127,5 +127,9 @@ public class JMenuPresidente extends JFrame {
 		btnSair.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnSair.setBounds(177, 201, 89, 23);
 		contentPane.add(btnSair);
+		
+		JLabel lbldinamico = new JLabel("Olá," + pessoa.getNome());
+		lbldinamico.setBounds(0, 0, 404, 14);
+		contentPane.add(lbldinamico);
 	}
 }
