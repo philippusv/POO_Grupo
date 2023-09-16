@@ -26,7 +26,6 @@ public class ContaPoupanca extends Conta{
 	// Método de simulação de rendimento
 	public String calcularRendimento(double valorInvestido, int dias) {
 		Double calculo = valorInvestido * (tx / 30) * dias;
-		logger.log(Level.INFO, () -> "O seu rendimento vai ser de " + calculo + " reais");
 		return Double.toString(calculo);
 	}
 

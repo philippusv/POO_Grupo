@@ -1,52 +1,25 @@
 package br.com.poo.banco.views;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.contas.Conta;
-import br.com.poo.banco.contas.ContaCorrente;
-import br.com.poo.banco.contas.ContaPoupanca;
-import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.pessoas.Pessoas;
-
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class JMenuCliente extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					JMenuCliente frame = new JMenuCliente();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-	}
-
-	/**
-	 * Create the frame.
-	 * 
-	 * @param pessoa
-	 */
 	public JMenuCliente(Pessoas pessoa) {
 		setTitle("Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,23 +40,23 @@ public class JMenuCliente extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Corrente", "Poupança" }));
 		comboBox.setToolTipText("Conta");
-		comboBox.setBounds(64, 95, 139, 21);
+		comboBox.setBounds(64, 78, 159, 21);
 		contentPane.add(comboBox);
 
 		JLabel lblNewLabel_1 = new JLabel("Conta:");
-		lblNewLabel_1.setBounds(64, 80, 88, 18);
+		lblNewLabel_1.setBounds(64, 63, 88, 18);
 		contentPane.add(lblNewLabel_1);
 
 		// COMBOBOX OPERACAO
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "Saque/Depósito", "Transferência" }));
 		comboBox_1.setToolTipText("operação");
-		comboBox_1.setBounds(63, 156, 139, 21);
+		comboBox_1.setBounds(64, 125, 159, 21);
 		contentPane.add(comboBox_1);
 
 		// LABEL OPERACAO
 		JLabel lblNewLabel_1_1 = new JLabel("Operação:");
-		lblNewLabel_1_1.setBounds(64, 141, 88, 18);
+		lblNewLabel_1_1.setBounds(64, 110, 88, 18);
 		contentPane.add(lblNewLabel_1_1);
 
 		// BOTAO ENTRAR
@@ -125,7 +98,7 @@ public class JMenuCliente extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(64, 202, 139, 27);
+		btnNewButton.setBounds(64, 157, 159, 27);
 		contentPane.add(btnNewButton);
 
 		// BOTAO SALDO
@@ -157,11 +130,11 @@ public class JMenuCliente extends JFrame {
 				}
 			}
 		});
-		btnSaldo.setBounds(64, 240, 139, 27);
+		btnSaldo.setBounds(64, 202, 159, 27);
 		contentPane.add(btnSaldo);
 
 		JButton btnExtrato = new JButton("Abrir Extrato");
-		btnExtrato.setBounds(64, 278, 139, 27);
+		btnExtrato.setBounds(64, 231, 159, 27);
 		contentPane.add(btnExtrato);
 
 		JLabel lblNewLabel_2 = new JLabel("Olá, " + pessoa.getNome() + "!!");
@@ -171,10 +144,39 @@ public class JMenuCliente extends JFrame {
 		JButton botaoSair = new JButton("Sair");
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JLogin l = new JLogin();
+				l.setLocationRelativeTo(l);
+				l.setVisible(true);
 			}
 		});
-		botaoSair.setBounds(78, 316, 102, 27);
+		botaoSair.setBounds(97, 330, 102, 27);
 		contentPane.add(botaoSair);
+		
+		JButton botaoRendimento = new JButton("Simule Rendimento");
+		botaoRendimento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JRendimento r = new JRendimento(pessoa);
+				r.setLocationRelativeTo(r);
+				r.setVisible(true);
+			}
+		});
+		botaoRendimento.setBounds(64, 261, 159, 27);
+		contentPane.add(botaoRendimento);
+		
+		//Botao para passar para a tela de tributação
+		JButton botaoTributacao = new JButton("Veja a Tributação");
+//		botaoTributacao.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				dispose();
+//				JTributacao t = new JTributacao();
+//				t.setLocationRelativeTo(t);
+//				t.setVisible(true);
+//			}
+//		});
+		botaoTributacao.setBounds(64, 292, 159, 27);
+		contentPane.add(botaoTributacao);
 
 	}
 }
