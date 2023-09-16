@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -91,6 +92,7 @@ public class JMenuCliente extends JFrame {
 					jSaqueDeposito.setLocationRelativeTo(jSaqueDeposito);
 					jSaqueDeposito.setVisible(true);
 				}else {
+					dispose();
 					JTransf jTransf = new JTransf(pessoa, contaSelecionada);
 					jTransf.setLocationRelativeTo(jTransf);
 					jTransf.setVisible(true);
@@ -134,6 +136,41 @@ public class JMenuCliente extends JFrame {
 		contentPane.add(btnSaldo);
 
 		JButton btnExtrato = new JButton("Abrir Extrato");
+		btnExtrato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboBox.getSelectedItem().toString().equalsIgnoreCase("corrente")) {
+					// chama a tela passando a conta corrente
+					for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+						if (conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+							dispose();
+							JExtrato jExtrato;
+							try {
+								jExtrato = new JExtrato(pessoa, conta);
+								jExtrato.setLocationRelativeTo(jExtrato);
+								jExtrato.setVisible(true);
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							}
+						}
+					}
+				} else {
+					// chama a tela passando a conta poupanca
+					for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+						if (!conta.getTipoConta().equalsIgnoreCase("CORRENTE")) {
+							dispose();
+							JExtrato jExtrato;
+							try {
+								jExtrato = new JExtrato(pessoa, conta);
+								jExtrato.setLocationRelativeTo(jExtrato);
+								jExtrato.setVisible(true);
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							}
+						}
+					}
+				}
+			}
+		});
 		btnExtrato.setBounds(64, 231, 159, 27);
 		contentPane.add(btnExtrato);
 
