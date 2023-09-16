@@ -11,10 +11,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.contas.Conta;
+import br.com.poo.banco.contas.ContaCorrente;
+import br.com.poo.banco.enums.ContaEnum;
 import br.com.poo.banco.pessoas.Pessoas;
 
 public class JMenuCliente extends JFrame {
@@ -67,7 +70,7 @@ public class JMenuCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Conta contaSelecionada = null;
 				String op = null;
-				
+
 				// Definindo a conta selecionada
 				if (comboBox.getSelectedItem().toString().equalsIgnoreCase("corrente")) {
 					// conta corrente selecionada
@@ -84,20 +87,20 @@ public class JMenuCliente extends JFrame {
 						}
 					}
 				}
-				
+
 				// Chamando tela JSaqueDeposito ou JTransf
-				if(comboBox_1.getSelectedItem().toString().equalsIgnoreCase("Saque/Depósito")) {
+				if (comboBox_1.getSelectedItem().toString().equalsIgnoreCase("Saque/Depósito")) {
 					dispose();
 					JSaqueDeposito jSaqueDeposito = new JSaqueDeposito(pessoa, contaSelecionada);
 					jSaqueDeposito.setLocationRelativeTo(jSaqueDeposito);
 					jSaqueDeposito.setVisible(true);
-				}else {
+				} else {
 					dispose();
 					JTransf jTransf = new JTransf(pessoa, contaSelecionada);
 					jTransf.setLocationRelativeTo(jTransf);
 					jTransf.setVisible(true);
 				}
-				
+
 			}
 		});
 		btnNewButton.setBounds(64, 157, 159, 27);
@@ -105,7 +108,7 @@ public class JMenuCliente extends JFrame {
 
 		// BOTAO SALDO
 		JButton btnSaldo = new JButton("Abrir Saldo");
-		// Chama a tela JSaldo 
+		// Chama a tela JSaldo
 		btnSaldo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboBox.getSelectedItem().toString().equalsIgnoreCase("corrente")) {
@@ -177,7 +180,7 @@ public class JMenuCliente extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Olá, " + pessoa.getNome() + "!!");
 		lblNewLabel_2.setBounds(0, 0, 379, 14);
 		contentPane.add(lblNewLabel_2);
-		
+
 		JButton botaoSair = new JButton("Sair");
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -189,7 +192,7 @@ public class JMenuCliente extends JFrame {
 		});
 		botaoSair.setBounds(97, 330, 102, 27);
 		contentPane.add(botaoSair);
-		
+
 		JButton botaoRendimento = new JButton("Simule Rendimento");
 		botaoRendimento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -201,17 +204,35 @@ public class JMenuCliente extends JFrame {
 		});
 		botaoRendimento.setBounds(64, 261, 159, 27);
 		contentPane.add(botaoRendimento);
-		
-		//Botao para passar para a tela de tributação
+
+		// Botao para passar para a tela de tributação
 		JButton botaoTributacao = new JButton("Veja a Tributação");
-//		botaoTributacao.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				dispose();
-//				JTributacao t = new JTributacao();
-//				t.setLocationRelativeTo(t);
-//				t.setVisible(true);
-//			}
-//		});
+		botaoTributacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+
+				// chama a tela passando a conta corrente
+				boolean verificacao = false;
+				for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
+					if (conta.getTipoConta().equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+						try {
+							dispose();
+							JTributacao t = new JTributacao(pessoa, (ContaCorrente) conta);
+							t.setLocationRelativeTo(t);
+							t.setVisible(true);
+						} catch (IOException e1) {
+
+							e1.printStackTrace();
+						}
+						verificacao = true;
+					}
+
+				}
+				if(!verificacao) {
+					JOptionPane.showMessageDialog(botaoTributacao, "Sua conta poupança não tem tributação.");
+				}
+			}
+		});
 		botaoTributacao.setBounds(64, 292, 159, 27);
 		contentPane.add(botaoTributacao);
 

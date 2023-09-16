@@ -16,13 +16,14 @@ public abstract class Conta {
 	protected String cpfTitular;
 	protected Double saldo;
 	protected String agencia;
+	protected Double totalTrib = 0.0;
 	protected static final double TAXA = 0.10;
 	protected static final double TAXATRANS = 0.20;
 
-	//criar maps
+	// criar maps
 	public static HashMap<String, List<Conta>> mapaContas = new HashMap<>();
 	public static HashMap<String, Conta> mapaNumContas = new HashMap<>();
-	
+
 	// instancia o logger
 	Logger logger = Util.setupLogger();
 
@@ -72,7 +73,7 @@ public abstract class Conta {
 		return "Tipo de conta: " + tipoConta + " Número da conta: " + numero + "\nCPF Titular: " + cpfTitular
 				+ "Saldo: " + saldo + "\nAgencia: " + agencia;
 	}
-	
+
 	public void sacar(double valor) throws IOException {
 		if (valor > 0 && valor <= saldo) {
 			saldo -= valor;
@@ -80,7 +81,7 @@ public abstract class Conta {
 			logger.warning("Saldo insuficiente ou valor de saque inválido.");
 		}
 	}
-	
+
 	public void depositar(double valor) {
 		if (valor > 0) {
 			saldo += valor;
@@ -88,12 +89,12 @@ public abstract class Conta {
 			logger.warning("O valor do depósito na poupança deve ser maior que zero.");
 		}
 	}
-	
+
 	public void transferir(double valor, Conta destino) throws IOException {
 		this.sacar(valor);
 		destino.depositar(valor);
 	}
-	
+
 	// metodo operacoes
 	public void operacoes(double valor, Conta destino, int tipoOperacao) throws IOException {
 		switch (tipoOperacao) {
@@ -101,21 +102,29 @@ public abstract class Conta {
 			this.sacar(valor);
 			saldo -= TAXA;
 			RelatorioCliente.comprovanteSaque(this, valor);
+			this.tributacao(0.1);
 			break;
 
 		case 2:
 			this.depositar(valor);
 			saldo -= TAXA;
 			RelatorioCliente.comprovanteDeposito(this, valor);
+			this.tributacao(0.1);
 			break;
-			
+
 		case 3:
 			this.transferir(valor, destino);
 			saldo -= TAXATRANS;
 			RelatorioCliente.comprovanteTransferencia(this, valor, destino);
+			this.tributacao(0.20); 
 			break;
 		default:
 			break;
 		}
 	}
+
+	// Metodo Tributacao
+	public void tributacao(Double tx) throws IOException  {
+	}
+
 }

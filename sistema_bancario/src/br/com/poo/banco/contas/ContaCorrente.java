@@ -56,5 +56,13 @@ public class ContaCorrente extends Conta {
 		this.saldo -= valor;
 		logger.log(Level.WARNING, () -> "Saque em cheque especial!\nSaldo disponível: " + saldo);
 	}
+	
+	//Metodo Tributacao
+	@Override
+	public void tributacao(Double tx) throws IOException {
+		
+		this.totalTrib += tx;
+		RelatorioCliente.tributacaoCC(this,this.totalTrib);
+	} 
 
 }

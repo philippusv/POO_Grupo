@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
+
 
 import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
@@ -120,17 +120,12 @@ public class RelatorioCliente {
 	}
 //RELATORIO DE TRIBUTAÇÃO DA CC
 
-	public static void tributacaoCC(ContaCorrente conta, int numSaque, int numDeposito, int numTransferencia)
+	public static void tributacaoCC(ContaCorrente conta, Double totalTrib)
 			throws IOException {
 		DecimalFormat df = new DecimalFormat("#,###.##");
 
-		double Tsaque = numSaque * conta.getTAXA();
-		double Tdeposito = numSaque * conta.getTAXA();
-		double Ttransferencia = numTransferencia * conta.getTAXATRANS();
-		double tarifaTotal = Tsaque + Tdeposito + Ttransferencia;
-
-		String path = "Tributacao conta corrente" + "_" + conta.getNumero() + "_" + conta.getCpfTitular();
-		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
+		String path = "TributacaoCC" + "_" + conta.getNumero() + "_" + conta.getCpfTitular();
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO));
 
 		buffWrite.append("************* RELATORIO DE TRIBUTAÇÃO DA CC *************" + "\n");
 		buffWrite.append("CPF do Titular: " + conta.getCpfTitular() + "\n");
@@ -138,12 +133,8 @@ public class RelatorioCliente {
 		buffWrite.append("Valor das taxas(R$): \n");
 		buffWrite.append("-Depósitos e saques: R$" + df.format(conta.getTAXA()) + "\n");
 		buffWrite.append("-Tranferencias: R$" + df.format(conta.getTAXATRANS()) + " a ser cobrada do remetente\n");
-		buffWrite.append("Total arrecadado até o momento: \n");
-		buffWrite.append("-Saque: R$" + df.format(Tsaque) + "\n");
-		buffWrite.append("-Depósitos: R$" + df.format(Tdeposito) + "\n");
-		buffWrite.append("-Tranferencias: R$" + df.format(Ttransferencia) + "\n");
-		buffWrite.append("-Tributação total: R$" + df.format(tarifaTotal) + "\n");
-
+		buffWrite.append("Total arrecadado até o momento: R$"+ totalTrib + "\n");
+		
 		LocalDateTime dataHora = LocalDateTime.now();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		buffWrite.append("Data da operação: " + dtf.format(dataHora) + "\n");
