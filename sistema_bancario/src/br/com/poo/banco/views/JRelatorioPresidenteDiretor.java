@@ -26,12 +26,12 @@ import br.com.poo.banco.pessoas.Pessoas;
 import br.com.poo.banco.pessoas.Presidente;
 import br.com.poo.banco.enums.PessoaEnum;
 import br.com.poo.banco.io.RelatorioPresidente;
+import javax.swing.JLabel;
 
 public class JRelatorioPresidenteDiretor extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableDiretorAgGer;
-	private JButton btnGerarRelatorio;
 
 	
 	public JRelatorioPresidenteDiretor(Pessoas pessoa) {
@@ -101,22 +101,21 @@ public class JRelatorioPresidenteDiretor extends JFrame {
 			}
 		}
 		
-		btnGerarRelatorio = new JButton("Gerar Relatorio");
-		btnGerarRelatorio.addActionListener(new ActionListener() {
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Arial", Font.PLAIN, 11));
+		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String[][] _dados = {{null}};
-				try {
-					RelatorioPresidente.relatorioDiretores(pessoa, dados.toArray(_dados));
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
+				dispose();
+				JMenuPresidente mp = new JMenuPresidente(pessoa);
+				mp.setLocationRelativeTo(mp);
+				mp.setVisible(true);
 			}
 		});
-		btnGerarRelatorio.setFont(new Font("Arial", Font.PLAIN, 11));
-		btnGerarRelatorio.setBounds(208, 271, 122, 23);
-		contentPane.add(btnGerarRelatorio);
+		btnVoltar.setBounds(184, 271, 122, 23);
+		contentPane.add(btnVoltar);
+		
+		JLabel lbldinamico = new JLabel("Olá," + pessoa.getNome());
+		lbldinamico.setBounds(0, 0, 404, 14);
+		contentPane.add(lbldinamico);
 	}
 }

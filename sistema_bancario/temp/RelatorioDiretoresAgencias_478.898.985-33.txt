@@ -1,0 +1,125 @@
+*** DADOS DOS DIRETORES E SUAS AGÊNCIAS ****
+============================
+Diretor: Carvalho Filho
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Agência: 004
+Gerente: America Singer
+----------------------------
+Agência: 005
+Gerente: Paula Fernandes
+----------------------------
+============================
+Diretor: Dafiny Brigertom
+Agência: 001
+Gerente: Amelia Curtis
+----------------------------
+Agência: 002
+Nenhum gerente cadastrado.
+----------------------------
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Data da operação: 16/09/2023 18:56:24
+************* FIM DO RELATÓRIO *************
+*** DADOS DOS DIRETORES E SUAS AGÊNCIAS ****
+============================
+Diretor: Carvalho Filho
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Agência: 004
+Gerente: America Singer
+----------------------------
+Agência: 005
+Gerente: Paula Fernandes
+----------------------------
+============================
+Diretor: Dafiny Brigertom
+Agência: 001
+Gerente: Amelia Curtis
+----------------------------
+Agência: 002
+Nenhum gerente cadastrado.
+----------------------------
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Data da operação: 16/09/2023 19:03:38
+************* FIM DO RELATÓRIO *************
+*** DADOS DOS DIRETORES E SUAS AGÊNCIAS ****
+============================
+Diretor: Carvalho Filho
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Agência: 004
+Gerente: America Singer
+----------------------------
+Agência: 005
+Gerente: Paula Fernandes
+----------------------------
+============================
+Diretor: Dafiny Brigertom
+Agência: 001
+Gerente: Amelia Curtis
+----------------------------
+Agência: 002
+Nenhum gerente cadastrado.
+----------------------------
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Data da operação: 16/09/2023 19:03:40
+************* FIM DO RELATÓRIO *************
+*** DADOS DOS DIRETORES E SUAS AGÊNCIAS ****
+============================
+Diretor: Carvalho Filho
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Agência: 004
+Gerente: America Singer
+----------------------------
+Agência: 005
+Gerente: Paula Fernandes
+----------------------------
+============================
+Diretor: Dafiny Brigertom
+Agência: 001
+Gerente: Amelia Curtis
+----------------------------
+Agência: 002
+Nenhum gerente cadastrado.
+----------------------------
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Data da operação: 16/09/2023 19:26:30
+************* FIM DO RELATÓRIO *************
+*** DADOS DOS DIRETORES E SUAS AGÊNCIAS ****
+============================
+Diretor: Carvalho Filho
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Agência: 004
+Gerente: America Singer
+----------------------------
+Agência: 005
+Gerente: Paula Fernandes
+----------------------------
+============================
+Diretor: Dafiny Brigertom
+Agência: 001
+Gerente: Amelia Curtis
+----------------------------
+Agência: 002
+Nenhum gerente cadastrado.
+----------------------------
+Agência: 003
+Gerente: Abigail Maddox
+----------------------------
+Data da operação: 16/09/2023 19:27:47
+************* FIM DO RELATÓRIO *************

@@ -34,13 +34,7 @@ public class JRelatorioPresidenteCapital extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblPresidente = new JLabel("Presidente");
-		lblPresidente.setForeground(new Color(255, 0, 128));
-		lblPresidente.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblPresidente.setBounds(10, 0, 70, 22);
-		contentPane.add(lblPresidente);
-		
-		JLabel lblRelatorioCapital = new JLabel("Relatório total capital armazenado");
+				JLabel lblRelatorioCapital = new JLabel("Relatório total capital armazenado");
 		lblRelatorioCapital.setForeground(new Color(0, 0, 0));
 		lblRelatorioCapital.setFont(new Font("Arial", Font.PLAIN, 12));
 		lblRelatorioCapital.setBounds(58, 52, 215, 14);
@@ -65,5 +59,22 @@ public class JRelatorioPresidenteCapital extends JFrame {
 		btnGerarRelatorio.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnGerarRelatorio.setBounds(86, 125, 153, 23);
 		contentPane.add(btnGerarRelatorio);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Arial", Font.PLAIN, 11));
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JMenuPresidente mp = new JMenuPresidente(pessoa);
+				mp.setLocationRelativeTo(mp);
+				mp.setVisible(true);
+			}
+		});
+		btnVoltar.setBounds(117, 163, 89, 23);
+		contentPane.add(btnVoltar);
+		
+		JLabel lbldinamico = new JLabel("Olá," + pessoa.getNome());
+		lbldinamico.setBounds(0, 0, 404, 14);
+		contentPane.add(lbldinamico);
 	}
 }
