@@ -202,7 +202,7 @@ public class JRelatorioGerente extends JFrame {
 		 * Outros
 		 */
 		// Label dinâmico: Agência
-		JLabel lblNewLabel = new JLabel("Contas na agência: " + agencia);
+		JLabel lblNewLabel = new JLabel("Contas na agência: " + agencia + "; " + nums.toArray().length + " contas no total.");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 11, 414, 14);
 		contentPane.add(lblNewLabel);

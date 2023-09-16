@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +25,7 @@ import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Pessoas;
 import br.com.poo.banco.pessoas.Presidente;
 import br.com.poo.banco.enums.PessoaEnum;
+import br.com.poo.banco.io.RelatorioPresidente;
 
 public class JRelatorioPresidenteDiretor extends JFrame {
 
@@ -34,8 +37,8 @@ public class JRelatorioPresidenteDiretor extends JFrame {
 	public JRelatorioPresidenteDiretor(Pessoas pessoa) {
 		setTitle("Sistema Bancário");
 		Presidente presidente = (Presidente) pessoa;
-		Diretor diretor = (Diretor) pessoa;
-		Gerente gerente = (Gerente) pessoa;
+		//Diretor diretor = (Diretor) pessoa;
+		//Gerente gerente = (Gerente) pessoa;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 515, 360);
 		contentPane = new JPanel();
@@ -53,60 +56,63 @@ public class JRelatorioPresidenteDiretor extends JFrame {
 		tableDiretorAgGer = new JTable();
 		tableDiretorAgGer.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column"
+				"Nome Diretor", "Agência", "Nome Gerente"
 			}
 		));
 		tableDiretorAgGer.setFont(new Font("Arial", Font.PLAIN, 12));
 		scrollPane.setViewportView(tableDiretorAgGer);
-		/*for (Map.Entry<String, Pessoas> diretoria : Pessoas.mapaPessoas.entrySet()){
-			if(diretoria.getValue().getTipo().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())){
+		
+		String[] informacoes = {"", "", "Nenhum Gerente"};
+		List<String[]> dados = new ArrayList<String[]>();
+		
+		// Pegar diretores
+		for (Map.Entry<String, Pessoas> diretor : Pessoas.mapaPessoas.entrySet()){
+			if(diretor.getValue().getTipo().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())){
+				informacoes[0] = diretor.getValue().getNome();
+				
+				// Guardar todas as agências de cada diretor:
 				String[] agencias = {
-						((Diretor) diretoria.getValue()).getagencia1(),	
-						((Diretor) diretoria.getValue()).getagencia2(),
-						((Diretor) diretoria.getValue()).getagencia3()
+						((Diretor) diretor.getValue()).getagencia1(),	
+						((Diretor) diretor.getValue()).getagencia2(),
+						((Diretor) diretor.getValue()).getagencia3()
 				};
+				
+				// Executar para cada agência do diretor:
 				for(String agencia: agencias) {
-					for(Map.Entry<String, Pessoas> gerentes : Pessoas.mapaPessoas.entrySet()) {
-						if(((Gerente)gerentes.getValue()).getAgencia().equalsIgnoreCase(agencia)) {
-							String[] informacoes = {
-									diretoria.getValue().getNome(),
-									agencia,
-									gerentes.getValue().getNome()
-							};
-							((DefaultTableModel) tableDiretorAgGer.getModel()).addRow(informacoes);
+					informacoes[1] = agencia;
+					
+					// Pegar gerentes das agências:
+					informacoes[2] = "";
+					for(Map.Entry<String, Pessoas> gerente : Pessoas.mapaPessoas.entrySet()) {
+						if(gerente.getValue().getTipo().equalsIgnoreCase(PessoaEnum.GERENTE.getTipoPessoa())) {
+							if(((Gerente) gerente.getValue()).getAgencia().equalsIgnoreCase(agencia)) {
+								informacoes[2] = gerente.getValue().getNome();
+								break;
+							}
 						}
 					}
+					((DefaultTableModel) tableDiretorAgGer.getModel()).addRow(informacoes);
+					//System.out.println(informacoes[0] +  informacoes[1] + informacoes[2]);
+					dados.add(informacoes.clone());
+					informacoes[0] = "";
 				}
 			}
-
-		}*/
-
-								
+		}
+		
 		btnGerarRelatorio = new JButton("Gerar Relatorio");
 		btnGerarRelatorio.addActionListener(new ActionListener() {
-			static final String PATH_BASICO = "./temp/";
-			static final String EXTENSAO = ".txt";
-			
 			public void actionPerformed(ActionEvent e) {
-				String path = "RelatorioPresidente";
-				try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO))){
-					
-					buffWrite.append("************* DIRETOR ************\n");
-					buffWrite.append("Nomes: \n" + diretor.getNome());
-					buffWrite.append("************* AGÊNCIA ************\n");
-					buffWrite.append("Agências: \n" + gerente.getAgencia());
-					buffWrite.append("************* GERENTE ************\n");
-					buffWrite.append("Nomes: \n" + gerente.getNome());
-						
-				} catch (IOException e1) {
 				
+				String[][] _dados = {{null}};
+				try {
+					RelatorioPresidente.relatorioDiretores(pessoa, dados.toArray(_dados));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			
-			
+				
 			}
 		});
 		btnGerarRelatorio.setFont(new Font("Arial", Font.PLAIN, 11));

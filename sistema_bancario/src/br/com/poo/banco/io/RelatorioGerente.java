@@ -21,7 +21,9 @@ public class RelatorioGerente {
 		String path = "TotalContas_Agencia" + gerente.getAgencia();
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
 		
-		buffWrite.append("********** TOTAL DE CONTAS **********" + "\n");
+		buffWrite.append("*******************************************" + "\n" + 
+				 		 "************* TOTAL DE CONTAS *************" + "\n" +
+				 		 "*******************************************" + "\n");
 		buffWrite.append("Agência " + gerente.getAgencia() + ": " + numContas.length + " contas\n");
 		for (String num : numContas) {
 			buffWrite.append(num + "\n");
@@ -29,7 +31,7 @@ public class RelatorioGerente {
 		LocalDateTime dataHora = LocalDateTime.now();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		buffWrite.append("Data de impressão: " + dtf.format(dataHora) + "\n");
-		buffWrite.append("************* FIM TOTAL *************" + "\n");
+		buffWrite.append("*********** FIM TOTAL DE CONTAS ***********" + "\n");
 		buffWrite.close();
 	}
 	
@@ -38,7 +40,9 @@ public class RelatorioGerente {
 			String path = "RelatorioContas_Agencia" + gerente.getAgencia();
 			BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
 
-			buffWrite.append("****** RELATÓRIO DE CONTAS ******" + "\n");
+			buffWrite.append("*******************************************" + "\n" + 
+							 "*********** RELATÓRIO DE CONTAS ***********" + "\n" +
+							 "*******************************************" + "\n");
 			for (String key : keys) {
 				for (Conta conta : Conta.mapaContas.get(key)) {
 					buffWrite.append("Número da Conta: " + conta.getNumero() + "\n");
@@ -46,13 +50,15 @@ public class RelatorioGerente {
 					buffWrite.append("Nome do Títular: " + Pessoas.mapaPessoas.get(key).getNome() + "\n");
 					buffWrite.append("CPF do Títular: " + key + "\n");
 					buffWrite.append("Saldo da Conta: " + conta.getSaldo() + "\n");
+					buffWrite.append("--------------------------------" + "\n");
 				}
 				buffWrite.append("--------------------------------" + "\n");
 			}
 			LocalDateTime dataHora = LocalDateTime.now();
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 			buffWrite.append("Data de impressão: " + dtf.format(dataHora) + "\n");
-			buffWrite.append("********* FIM RELATÓRIO *********" + "\n");
+			buffWrite.append("************** FIM RELATÓRIO **************" + "\n");
+
 			buffWrite.close();
 		}
 }
