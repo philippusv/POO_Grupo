@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import br.com.poo.banco.enums.PessoaEnum;
+import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Pessoas;
 
 public class JCadastroGerente extends JFrame {
@@ -121,16 +123,21 @@ public class JCadastroGerente extends JFrame {
 		        String cargo = textCargosCG.getText();
 		        String nome = textNomeCG.getText();
 		        String cpf = textFieldCG.getText();
-		        String senha = new String(passwordFieldCG.getPassword());
-		        String salario = textFieldSalarioCG.getText();
-		        String numFuncionarios = textFieldNumFuncionariosCG.getText();
+		        Integer senha = Integer.parseInt(new String(passwordFieldCG.getPassword()));
+		        Double salario = Double.parseDouble(textFieldSalarioCG.getText());
+		        Integer numFuncionarios = Integer.parseInt(textFieldNumFuncionariosCG.getText());
 		        String agencia = textAgenciaCG.getText();
 		        
-		        if(cargo.isEmpty() || nome.isEmpty() || cpf.isEmpty() || senha.isEmpty() || salario.isEmpty() || numFuncionarios.isEmpty()
+		        // Tratamento de erro se os campos estiverem vazios
+		        if(cargo.isEmpty() || nome.isEmpty() || cpf.isEmpty() || senha.toString().isEmpty() || salario.toString().isEmpty() || numFuncionarios.toString().isEmpty()
 		        		|| agencia.isEmpty()) {
 		        	JOptionPane.showMessageDialog(btnCadastrarCG, "Preencha todos os campos");
-       	        }else {	        		
-
+       	        }else {	
+       	        	
+       	        // Colocando no mapa	
+       	        	Pessoas g = new Gerente(cargo, nome, cpf, senha, salario, numFuncionarios, agencia);
+					Cliente.mapaPessoas.put(cpf, g);
+       	     
 		        // Criar uma string com os dados formatados
 		        String dados = "\n" + cargo + ";" + nome + ";" + cpf + ";" + senha + ";" + salario + ";" + numFuncionarios + ";" + agencia;
 
