@@ -27,7 +27,7 @@ public class JMenuCliente extends JFrame {
 	public JMenuCliente(Pessoas pessoa) {
 		setTitle("Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 301, 407);
+		setBounds(100, 100, 301, 472);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -69,8 +69,6 @@ public class JMenuCliente extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Conta contaSelecionada = null;
-				String op = null;
-
 				// Definindo a conta selecionada
 				if (comboBox.getSelectedItem().toString().equalsIgnoreCase("corrente")) {
 					// conta corrente selecionada
@@ -190,7 +188,7 @@ public class JMenuCliente extends JFrame {
 				l.setVisible(true);
 			}
 		});
-		botaoSair.setBounds(97, 330, 102, 27);
+		botaoSair.setBounds(64, 377, 159, 27);
 		contentPane.add(botaoSair);
 
 		JButton botaoRendimento = new JButton("Simule Rendimento");
@@ -209,8 +207,6 @@ public class JMenuCliente extends JFrame {
 		JButton botaoTributacao = new JButton("Veja a Tributação");
 		botaoTributacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-
 				// chama a tela passando a conta corrente
 				boolean verificacao = false;
 				for (Conta conta : Conta.mapaContas.get(pessoa.getCpf())) {
@@ -235,6 +231,19 @@ public class JMenuCliente extends JFrame {
 		});
 		botaoTributacao.setBounds(64, 292, 159, 27);
 		contentPane.add(botaoTributacao);
+		
+		JButton botaoSeguro = new JButton("Seguro de Vida");
+		botaoSeguro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JMenuSeguro s = new JMenuSeguro(pessoa);
+				s.setLocationRelativeTo(s);
+				s.setVisible(true);
+			}
+		});
+		botaoSeguro.setFont(new Font("Tahoma", Font.BOLD, 11));
+		botaoSeguro.setBounds(64, 323, 159, 27);
+		contentPane.add(botaoSeguro);
 
 	}
 }

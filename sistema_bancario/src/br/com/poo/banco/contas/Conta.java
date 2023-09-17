@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.poo.banco.io.RelatorioCliente;
+import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Pessoas;
 import br.com.poo.banco.util.Util;
 
 public abstract class Conta {
@@ -108,6 +110,10 @@ public abstract class Conta {
 			saldo -= TAXATRANS;
 			RelatorioCliente.comprovanteTransferencia(this, valor, destino);
 			this.tributacao(0.20); 
+			break;
+		case 4:
+			this.sacar(valor);
+			RelatorioCliente.tributacaoSeguro((Cliente)Pessoas.mapaPessoas.get(this.getCpfTitular()), this);
 			break;
 		default:
 			break;

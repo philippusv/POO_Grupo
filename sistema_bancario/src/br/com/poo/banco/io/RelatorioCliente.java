@@ -10,11 +10,13 @@ import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.enums.ContaEnum;
+import br.com.poo.banco.pessoas.Cliente;
+import br.com.poo.banco.pessoas.Pessoas;
 import br.com.poo.banco.util.Util;
 
 public class RelatorioCliente {
 
-	public RelatorioCliente() {
+	private RelatorioCliente() {
 	}
 
 	// Constantes
@@ -120,8 +122,8 @@ public class RelatorioCliente {
 		}
 		buffWrite.close();
 	}
-//RELATORIO DE TRIBUTAÇÃO DA CC
 
+	//RELATORIO DE TRIBUTAÇÃO DA CC
 	public static void tributacaoCC(ContaCorrente conta, Double totalTrib) throws IOException {
 
 		String path = "TributacaoCC" + "_" + conta.getNumero() + "_" + conta.getCpfTitular();
@@ -144,7 +146,7 @@ public class RelatorioCliente {
 		buffWrite.close();
 	}
 
-//RELATORIO DE RENDIMENTO DA POUPANÇA
+	//RELATORIO DE RENDIMENTO DA POUPANÇA
 	public static void rendimentoCP(ContaPoupanca conta, double valorInvestido, int dias) throws IOException {
 
 		String path = "Rendimento Poupanca";
@@ -165,7 +167,7 @@ public class RelatorioCliente {
 		buffWrite.close();
 	}
 
-//RELATORIO SALDO
+	//RELATORIO SALDO
 	public static void saldo(Conta conta) throws IOException {
 		String path = "Saldo_" + conta.getTipoConta() + "_" + conta.getCpfTitular();
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
@@ -184,4 +186,25 @@ public class RelatorioCliente {
 		buffWrite.close();
 	}
 
+	// SEGURO DE VIDA
+	public static void tributacaoSeguro(Cliente cliente, Conta conta) throws IOException {
+
+		String path = "SeguroVida" + "_" + conta.getCpfTitular();
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO));
+
+		buffWrite.append("************* RELATORIO DE TRIBUTAÇÃO DO SEGURO DE VIDA *************" + "\n");
+		buffWrite.append("Nome do titular: " + cliente.getNome() + "\n");
+		buffWrite.append("CPF: " + conta.getCpfTitular() + "\n");
+		buffWrite.append("Conta: " + conta.getNumero() + "\n");
+		buffWrite.append("Valor Segurado: R$ "+Util.dfFormat(cliente.getSeguroVida().getValorSegurado())+"\n");
+		buffWrite.append("Valor Tributado: R$ "+Util.dfFormat(cliente.calcularTributo())+"\n");
+
+		LocalDateTime dataHora = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		buffWrite.append("Data da operação: " + dtf.format(dataHora) + "\n");
+
+		buffWrite.append("*********** FIM RELATORIO DO SEGURO DE VIDA ***********\n");
+
+		buffWrite.close();
+	}
 }
