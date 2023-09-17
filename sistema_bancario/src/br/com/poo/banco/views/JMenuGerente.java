@@ -50,7 +50,7 @@ public class JMenuGerente extends JFrame {
 		btnCadastroConta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				JCadastroConta jCadastroConta = new JCadastroConta(pessoa); //////////////////////////////////////// wip
+				JCadastroConta jCadastroConta = new JCadastroConta(pessoa);
 				jCadastroConta.setLocationRelativeTo(jCadastroConta);
 				jCadastroConta.setVisible(true);
 			}
@@ -73,6 +73,14 @@ public class JMenuGerente extends JFrame {
 		
 		// Botão para voltar para a tela de login:
 		JButton btnVoltar = new JButton("Sair");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				JLogin jLogin = new JLogin();
+				jLogin.setLocationRelativeTo(jLogin);
+				jLogin.setVisible(true);
+			}
+		});
 		btnVoltar.setBounds(129, 216, 166, 23);
 		contentPane.add(btnVoltar);
 		

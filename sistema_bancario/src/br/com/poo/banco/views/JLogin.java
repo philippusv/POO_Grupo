@@ -113,16 +113,16 @@ public class JLogin extends JFrame {
 					// Abrir Menu de Diretor:
 					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
 						dispose();
-						//JMenuDiretor jMenuDiretor = new JMenuDiretor(pessoa);
-						//jMenuDiretor.setLocationRelativeTo(jMenuDiretor);
-						//jMenuDiretor.setVisible(true);
+						JMenuDiretor jMenuDiretor = new JMenuDiretor(pessoa);
+						jMenuDiretor.setLocationRelativeTo(jMenuDiretor);
+						jMenuDiretor.setVisible(true);
 					
 					// Abrir Menu de Presidente
 					}else if(comboBox.getSelectedItem().toString().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getTipoPessoa())) {
 						dispose();
-						//JMenuPresidente jMenuPresidente = new JMenuPresidente(pessoa);
-						//jMenuPresidente.setLocationRelativeTo(jMenuPresidente);
-						//jMenuPresidente.setVisible(true);
+						JMenuPresidente jMenuPresidente = new JMenuPresidente(pessoa);
+						jMenuPresidente.setLocationRelativeTo(jMenuPresidente);
+						jMenuPresidente.setVisible(true);
 					}
 				}
 				

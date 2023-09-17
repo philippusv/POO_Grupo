@@ -49,7 +49,7 @@ public class JCadastroConta extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		lbCadastroCliente.setForeground(new Color(255, 0, 128));
-		lbCadastroCliente.setBounds(157, 9, 227, 29);
+		lbCadastroCliente.setBounds(132, 10, 272, 29);
 		lbCadastroCliente.setFont(new Font("Arial Black", Font.BOLD, 20));
 
 		lbCadastroCliente.setVerticalAlignment(SwingConstants.TOP);
@@ -81,14 +81,14 @@ public class JCadastroConta extends JFrame {
 					menuG.setVisible(true);
 				}else if(pessoa.getTipo().equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
 					dispose();
-					JCadastroConta menu = new JCadastroConta(pessoa);
-					menu.setLocationRelativeTo(menu);
-					menu.setVisible(true);
+					JMenuDiretor menuD = new JMenuDiretor(pessoa);
+					menuD.setLocationRelativeTo(menuD);
+					menuD.setVisible(true);
 				}else {
 					dispose();
-					JCadastroConta menu1 = new JCadastroConta(pessoa);
-					menu1.setLocationRelativeTo(menu1);
-					menu1.setVisible(true);
+					JMenuPresidente menuP = new JMenuPresidente(pessoa);
+					menuP.setLocationRelativeTo(menuP);
+					menuP.setVisible(true);
 				}
 				
 			}
@@ -226,9 +226,9 @@ public class JCadastroConta extends JFrame {
 							menu.setLocationRelativeTo(menu);
 							menu.setVisible(true);
 						}else {
-							JCadastroConta menu1 = new JCadastroConta(pessoa);
-							menu1.setLocationRelativeTo(menu1);
-							menu1.setVisible(true);
+							JMenuPresidente mp = new JMenuPresidente(pessoa);
+							mp.setLocationRelativeTo(mp);
+							mp.setVisible(true);
 						}
 						
 						

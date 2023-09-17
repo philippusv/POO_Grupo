@@ -50,8 +50,9 @@ public class LeituraEscrita {
 					ContaPoupanca cp = new ContaPoupanca(dados[0], dados[1], 
 							dados[2], Double.parseDouble(dados[3]),dados[4]);
 					
-					// insere a conta poupanca no mapa
+					// insere a conta poupanca nos mapas
 					Conta.mapaContas.computeIfAbsent(dados[2], k -> new ArrayList<>()).add(cp);
+					Conta.mapaNumContas.put(dados[1], cp);
 
 				} else if (dados[0].equalsIgnoreCase(ContaEnum.CORRENTE.name())) {
 					ContaCorrente cc = new ContaCorrente(dados[0], dados[1], 
@@ -60,6 +61,7 @@ public class LeituraEscrita {
 					
 					// insere a conta corrente no mapa
 					Conta.mapaContas.computeIfAbsent(dados[2], k -> new ArrayList<>()).add(cc);
+					Conta.mapaNumContas.put(dados[1], cc);
 					
 				// map Pessoas //Cliente(String tipo, String nome, String cpf, Integer senha, String numConta)
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.getTipoPessoa())) {
@@ -74,7 +76,7 @@ public class LeituraEscrita {
 								
 				//String tipo, String nome, String cpf, Integer senha, Double salario						
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.getTipoPessoa())) {
-					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),Double.parseDouble(dados[4]));
+					Diretor dr = new Diretor(dados[0], dados[1],dados[2],Integer.parseInt(dados[3]),Double.parseDouble(dados[4]),dados[5],dados [6],dados[7]);
 					Pessoas.mapaPessoas.put(dados[2], dr);
 					
 				//String tipo, String nome, String cpf, Integer senha, Double salario, Integer numUnidades	

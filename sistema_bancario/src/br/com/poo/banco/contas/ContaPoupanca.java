@@ -1,10 +1,6 @@
 package br.com.poo.banco.contas;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-
-public class ContaPoupanca extends Conta implements IConta {
+public class ContaPoupanca extends Conta{
 	
 	private double tx = 0.5 / 100;
 
@@ -27,10 +23,7 @@ public class ContaPoupanca extends Conta implements IConta {
 	// Método de simulação de rendimento
 	public String calcularRendimento(double valorInvestido, int dias) {
 		Double calculo = valorInvestido * (tx / 30) * dias;
-		logger.log(Level.INFO, () -> "O seu rendimento vai ser de " + calculo + " reais");
-		String resultado = Double.toString(calculo);
-
-		return resultado;
+		return Double.toString(calculo);
 	}
 
 	// Método sacar
@@ -39,11 +32,7 @@ public class ContaPoupanca extends Conta implements IConta {
 	public void sacar(double valor) {
 		if (valor > 0 && valor <= saldo) {
 			saldo -= valor;
-			logger.log(Level.INFO, () -> "Saque de R$" + valor + " realizado com sucesso.");
-		} else {
-			logger.warning("Saldo insuficiente ou valor de saque inválido.");
 		}
-
 	}
 
 	// Método depositar
@@ -51,17 +40,7 @@ public class ContaPoupanca extends Conta implements IConta {
 	public void depositar(double valor) {
 		if (valor > 0) {
 			saldo += valor;
-			logger.log(Level.INFO, () -> "Depósito na poupança  de R$" + valor + " realizado com sucesso.");
-		} else {
-			logger.warning("O valor do depósito na poupança deve ser maior que zero.");
 		}
-	}
-
-	// Método trasferir
-	@Override
-	public void transferir(double valor, Conta destino) {
-		this.sacar(valor);
-		destino.depositar(valor);
 	}
 
 }

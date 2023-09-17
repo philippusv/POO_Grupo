@@ -14,15 +14,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import br.com.poo.banco.contas.Conta;
-// Import das classes usadas:
-import br.com.poo.banco.contas.ContaCorrente;
-import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.pessoas.Gerente;
 import br.com.poo.banco.pessoas.Pessoas;
+import br.com.poo.banco.io.RelatorioGerente;
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
@@ -84,16 +86,16 @@ public class JRelatorioGerente extends JFrame {
 		tableContasAgencia.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		tableContasAgencia.setBounds(10, 29, 414, 184);
 
-		// gambiarra até a linha 156:
-
 		// Adicionar todas as contas na agências:
+		List<String> nums = new ArrayList<String>();
+		List<String> keys = new ArrayList<String>();
+		
 		for (Map.Entry<String, List<Conta>> entry : Conta.mapaContas.entrySet()) {
 			List<Conta> contas = entry.getValue();
-
 			for (Conta conta : contas) {
-
 				if (conta.getAgencia().equals(agencia)) {
 					String[] item = { conta.getNumero(), " " };
+					nums.add(conta.getNumero());
 					model_A.addRow(item);
 				}
 			}
@@ -119,6 +121,7 @@ public class JRelatorioGerente extends JFrame {
 							for (int i = 0; i < tableInfoContas.getRowCount(); i++) {
 								if (value == tableInfoContas.getValueAt(i, 0)) {
 									model_B.removeRow(i);
+									keys.remove(i);
 									break;
 								}
 							}
@@ -128,11 +131,11 @@ public class JRelatorioGerente extends JFrame {
 								List<Conta> contas = entry.getValue();
 
 								for (Conta conta : contas) {
-
 									if (conta.getNumero().equals(value)) {
 										String[] item = { conta.getNumero(), conta.getTipoConta(),
 												Pessoas.mapaPessoas.get(conta.getCpfTitular()).getNome(),
 												conta.getCpfTitular(), "" + conta.getSaldo() };
+										keys.add(conta.getCpfTitular());
 										model_B.addRow(item);
 									}
 								}
@@ -148,12 +151,35 @@ public class JRelatorioGerente extends JFrame {
 		 */
 		// Imprimir relatório do total de contas:
 		JButton btnGerarRelatorio1 = new JButton("Imprimir relatório do total de contas");
+		btnGerarRelatorio1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] _nums = new String[nums.size()];
+				try {
+					RelatorioGerente.relatorioTotal(gerente, nums.toArray(_nums));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					//System.out.println("falha ao imprimir o relatório");
+				}
+				
+			}
+		});
 		btnGerarRelatorio1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnGerarRelatorio1.setBounds(10, 244, 292, 26);
 		contentPane.add(btnGerarRelatorio1);
 
 		// Imprimir relatório das contas selecionadas:
 		JButton btnGerarRelatorio2 = new JButton("Imprimir relatório das contas selecionadas");
+		btnGerarRelatorio2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] _keys = new String[keys.size()];
+				try {
+					RelatorioGerente.relatorioContas(gerente, keys.toArray(_keys));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("falha ao imprimir o relatório");
+				}
+			}
+		});
 		btnGerarRelatorio2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnGerarRelatorio2.setBounds(312, 244, 292, 26);
 		contentPane.add(btnGerarRelatorio2);
@@ -176,7 +202,7 @@ public class JRelatorioGerente extends JFrame {
 		 * Outros
 		 */
 		// Label dinâmico: Agência
-		JLabel lblNewLabel = new JLabel("Contas na agência: " + agencia);
+		JLabel lblNewLabel = new JLabel("Contas na agência: " + agencia + "; " + nums.toArray().length + " contas no total.");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 11, 414, 14);
 		contentPane.add(lblNewLabel);
