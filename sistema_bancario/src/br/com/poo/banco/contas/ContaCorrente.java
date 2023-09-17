@@ -1,7 +1,6 @@
 package br.com.poo.banco.contas;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import br.com.poo.banco.io.RelatorioCliente;
 
 public class ContaCorrente extends Conta {
@@ -40,27 +39,22 @@ public class ContaCorrente extends Conta {
 
 	// Método para saque em dinheiro na conta
 	@Override
-	public void sacar(double valor) throws IOException {
+	public void sacar(double valor) {
 		if (valor > 0 && valor <= saldo) {
 			saldo -= valor;
-			logger.log(Level.INFO, () -> "Saque de R$" + valor + " realizado com sucesso.");
 		} else if (valor > 0 && valor <= (saldo + chequeEspecial)) {
 			saqueChequeEspecial(valor);
-		} else {
-			logger.warning("Saldo insuficiente ou valor de saque inválido.");
 		}
 	}
 
 	// Metodo cheque especial
-	private void saqueChequeEspecial(double valor) throws IOException {
+	private void saqueChequeEspecial(double valor) {
 		this.saldo -= valor;
-		logger.log(Level.WARNING, () -> "Saque em cheque especial!\nSaldo disponível: " + saldo);
 	}
 	
 	//Metodo Tributacao
 	@Override
 	public void tributacao(Double tx) throws IOException {
-		
 		this.totalTrib += tx;
 		RelatorioCliente.tributacaoCC(this,this.totalTrib);
 	} 

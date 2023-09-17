@@ -10,6 +10,7 @@ import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.io.RelatorioCliente;
 import br.com.poo.banco.pessoas.Pessoas;
+import br.com.poo.banco.util.Util;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -48,8 +49,6 @@ public class JSaldo extends JFrame {
 	 * @param pessoa 
 	 */
 	public JSaldo(Pessoas pessoa, Conta conta) {
-		
-		DecimalFormat df = new DecimalFormat("#,###.##");
 				
 		setTitle("Sistema Bancário");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,7 +66,7 @@ public class JSaldo extends JFrame {
 		titulo.setFont(new Font("Impact", Font.PLAIN, 25));
 		contentPane.add(titulo);
 		
-		JLabel saldo = new JLabel("Saldo: R$ " + df.format(conta.getSaldo()));
+		JLabel saldo = new JLabel("Saldo: R$ " + Util.dfFormat(conta.getSaldo()));
 		saldo.setBounds(125, 101, 188, 42);
 		contentPane.add(saldo);
 		

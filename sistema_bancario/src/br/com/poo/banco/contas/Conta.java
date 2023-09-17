@@ -3,7 +3,7 @@ package br.com.poo.banco.contas;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.Map;
 
 import br.com.poo.banco.io.RelatorioCliente;
 import br.com.poo.banco.util.Util;
@@ -21,11 +21,8 @@ public abstract class Conta {
 	protected static final double TAXATRANS = 0.20;
 
 	// criar maps
-	public static HashMap<String, List<Conta>> mapaContas = new HashMap<>();
-	public static HashMap<String, Conta> mapaNumContas = new HashMap<>();
-
-	// instancia o logger
-	Logger logger = Util.setupLogger();
+	public static Map<String, List<Conta>> mapaContas = new HashMap<>();
+	public static Map<String, Conta> mapaNumContas = new HashMap<>();
 
 	// construtores
 	protected Conta() {
@@ -37,8 +34,6 @@ public abstract class Conta {
 		this.cpfTitular = cpfTitular;
 		this.saldo = saldo;
 		this.agencia = agencia;
-
-		Util.customizer();
 	}
 
 	// getter
@@ -74,23 +69,19 @@ public abstract class Conta {
 				+ "Saldo: " + saldo + "\nAgencia: " + agencia;
 	}
 
-	public void sacar(double valor) throws IOException {
+	public void sacar(double valor) {
 		if (valor > 0 && valor <= saldo) {
 			saldo -= valor;
-		} else {
-			logger.warning("Saldo insuficiente ou valor de saque inválido.");
 		}
 	}
 
 	public void depositar(double valor) {
 		if (valor > 0) {
 			saldo += valor;
-		} else {
-			logger.warning("O valor do depósito na poupança deve ser maior que zero.");
 		}
 	}
 
-	public void transferir(double valor, Conta destino) throws IOException {
+	public void transferir(double valor, Conta destino) {
 		this.sacar(valor);
 		destino.depositar(valor);
 	}

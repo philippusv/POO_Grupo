@@ -3,17 +3,19 @@ package br.com.poo.banco.io;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 
 import br.com.poo.banco.contas.Conta;
 import br.com.poo.banco.contas.ContaCorrente;
 import br.com.poo.banco.contas.ContaPoupanca;
 import br.com.poo.banco.enums.ContaEnum;
+import br.com.poo.banco.util.Util;
 
 public class RelatorioCliente {
+
+	public RelatorioCliente() {
+	}
 
 	// Constantes
 	// constantes
@@ -120,9 +122,7 @@ public class RelatorioCliente {
 	}
 //RELATORIO DE TRIBUTAÇÃO DA CC
 
-	public static void tributacaoCC(ContaCorrente conta, Double totalTrib)
-			throws IOException {
-		DecimalFormat df = new DecimalFormat("#,###.##");
+	public static void tributacaoCC(ContaCorrente conta, Double totalTrib) throws IOException {
 
 		String path = "TributacaoCC" + "_" + conta.getNumero() + "_" + conta.getCpfTitular();
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO));
@@ -131,10 +131,10 @@ public class RelatorioCliente {
 		buffWrite.append("CPF do Titular: " + conta.getCpfTitular() + "\n");
 		buffWrite.append("Conta: " + conta.getNumero() + "\n");
 		buffWrite.append("Valor das taxas(R$): \n");
-		buffWrite.append("-Depósitos e saques: R$" + df.format(conta.getTAXA()) + "\n");
-		buffWrite.append("-Tranferencias: R$" + df.format(conta.getTAXATRANS()) + " a ser cobrada do remetente\n");
-		buffWrite.append("Total arrecadado até o momento: R$"+ totalTrib + "\n");
-		
+		buffWrite.append("-Depósitos e saques: R$" + Util.dfFormat(conta.getTAXA()) + "\n");
+		buffWrite.append("-Tranferencias: R$" + Util.dfFormat(conta.getTAXATRANS()) + " a ser cobrada do remetente\n");
+		buffWrite.append("Total arrecadado até o momento: R$" + totalTrib + "\n");
+
 		LocalDateTime dataHora = LocalDateTime.now();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		buffWrite.append("Data da operação: " + dtf.format(dataHora) + "\n");
@@ -146,44 +146,42 @@ public class RelatorioCliente {
 
 //RELATORIO DE RENDIMENTO DA POUPANÇA
 	public static void rendimentoCP(ContaPoupanca conta, double valorInvestido, int dias) throws IOException {
-		DecimalFormat df = new DecimalFormat("#,###.##");
-		
+
 		String path = "Rendimento Poupanca";
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
-		
+
 		String rendimento = conta.calcularRendimento(valorInvestido, dias);
-		
+
 		buffWrite.append("************* RELATORIO DE RENDIMENTO DA CP *************" + "\n");
-		buffWrite.append("Investimento Inicial: R$" + df.format(valorInvestido) + "\n");
+		buffWrite.append("Investimento Inicial: R$" + Util.dfFormat(valorInvestido) + "\n");
 		buffWrite.append("Quantidade de dias: " + dias + " dias\n");
 		buffWrite.append("O seu rendimento vai ser de " + rendimento + " reais\n");
-		
+
 		LocalDateTime dataHora = LocalDateTime.now();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		buffWrite.append("Data da operação: " + dtf.format(dataHora) + "\n");
 		buffWrite.append("************* FIM RELATORIO DE RENDIMENTO DA CP *************" + "\n");
-		
+
 		buffWrite.close();
 	}
+
 //RELATORIO SALDO
 	public static void saldo(Conta conta) throws IOException {
-		DecimalFormat df = new DecimalFormat("#,###.##");
-		String path = "Saldo_"+ conta.getTipoConta() + "_" + conta.getCpfTitular();
+		String path = "Saldo_" + conta.getTipoConta() + "_" + conta.getCpfTitular();
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + path + EXTENSAO, true));
 
-			buffWrite.append("************* SALDO *************" + "\n");
-			buffWrite.append("CPF: " + conta.getCpfTitular() + "\n");
-			buffWrite.append("Conta: " + conta.getNumero() + "\n");
-			buffWrite.append("Tipo de Conta: " +conta.getTipoConta()+"\n ");
-			buffWrite.append("SALDO: R$" + df.format(conta.getSaldo()) + "\n");
-			
-			LocalDateTime dataHora = LocalDateTime.now();
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-			buffWrite.append("Data da operação: " + dtf.format(dataHora) + "\n");
+		buffWrite.append("************* SALDO *************" + "\n");
+		buffWrite.append("CPF: " + conta.getCpfTitular() + "\n");
+		buffWrite.append("Conta: " + conta.getNumero() + "\n");
+		buffWrite.append("Tipo de Conta: " + conta.getTipoConta() + "\n ");
+		buffWrite.append("SALDO: R$" + Util.dfFormat(conta.getSaldo()) + "\n");
 
-			buffWrite.append("*********** FIM SALDO ***********\n");
-			buffWrite.close();
+		LocalDateTime dataHora = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		buffWrite.append("Data da operação: " + dtf.format(dataHora) + "\n");
+
+		buffWrite.append("*********** FIM SALDO ***********\n");
+		buffWrite.close();
 	}
 
-	
 }
